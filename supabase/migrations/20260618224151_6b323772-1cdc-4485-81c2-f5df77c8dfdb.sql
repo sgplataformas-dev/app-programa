@@ -1,0 +1,35 @@
+
+DELETE FROM public.lesson_comments
+WHERE user_id IN (
+  SELECT id FROM public.profiles
+  WHERE nome ILIKE 'Elaine%'
+     OR nome ILIKE 'Eliane%'
+     OR nome ILIKE 'Valéria%' OR nome ILIKE 'Valeria%'
+     OR nome ILIKE 'Elinei%'
+     OR nome ILIKE 'Jane%'
+     OR nome ILIKE 'Regina%'
+)
+OR content ILIKE '%não abre%' OR content ILIKE '%nao abre%'
+OR content ILIKE '%não está abrindo%' OR content ILIKE '%nao esta abrindo%'
+OR content ILIKE '%não estou conseguindo%' OR content ILIKE '%nao estou conseguindo%'
+OR content ILIKE '%não consigo%' OR content ILIKE '%nao consigo%'
+OR content ILIKE '%não consegui%' OR content ILIKE '%nao consegui%'
+OR content ILIKE '%cadê%' OR content ILIKE '%cade a aula%' OR content ILIKE '%cade as aula%'
+OR content ILIKE '%palhaçada%' OR content ILIKE '%palhacada%'
+OR content ILIKE '%merda%'
+OR content ILIKE '%cancelar%'
+OR content ILIKE '%reembolso%'
+OR content ILIKE '%meu $ de volta%' OR content ILIKE '%dinheiro de volta%'
+OR content ILIKE '%sem vídeo%' OR content ILIKE '%sem video%'
+OR content ILIKE '%não tem vídeo%' OR content ILIKE '%nao tem video%'
+OR content ILIKE '%indisponível%' OR content ILIKE '%indisponivel%'
+OR content ILIKE '%não atendem%' OR content ILIKE '%nao atendem%'
+OR content ILIKE '%não responde%' OR content ILIKE '%nao responde%'
+OR content ILIKE '%ninguém responde%' OR content ILIKE '%ninguem responde%'
+OR content ILIKE '%bloqueado%'
+OR content ILIKE '%perdida%'
+OR content ILIKE '%atrapalhada%'
+OR content ILIKE '%pendendo tempo%' OR content ILIKE '%perdendo tempo%'
+OR content ILIKE '%marca automaticamente como concluída%'
+OR content ILIKE '%dá como concluída%' OR content ILIKE '%da como concluida%'
+OR content ILIKE '%marcou como%' OR content ILIKE '%marca como concluída%';
