@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Play, Pause, Mic } from "lucide-react";
-import avatar from "@/assets/fernandinho-avatar.png.asset.json";
+import avatar from "@/assets/fernandinho-avatar.png";
 
 const BARS = [
   6, 10, 14, 9, 18, 22, 13, 8, 16, 24, 20, 11, 7, 15, 21, 26, 18, 12, 9, 14,
@@ -104,7 +104,7 @@ export function WhatsAppAudio({ src }: { src: string }) {
 
         <div className="relative shrink-0">
           <img
-            src={avatar.url}
+            src={avatar}
             alt="Fernandinho"
             className="h-12 w-12 rounded-full object-cover"
           />

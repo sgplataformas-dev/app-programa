@@ -14,7 +14,7 @@ import {
 import { getDashboard } from "@/lib/active.functions";
 import { findAula, CATEGORIAS, type Modulo } from "@/content/aulas";
 import { captureMonitoringEvent } from "@/lib/monitoring";
-import fernandinhoStickerAsset from "@/assets/fernandinho-sticker.jpeg.asset.json";
+import fernandinhoStickerAsset from "@/assets/fernandinho-sticker.jpeg";
 
 const PROTOCOLO = CATEGORIAS.find((c) => c.slug === "protocolo")!;
 
@@ -175,7 +175,7 @@ function Hoje() {
           {/* Imagem do Fernando com balão */}
           <div className="flex shrink-0 justify-center">
             <img
-              src={fernandinhoStickerAsset.url}
+              src={fernandinhoStickerAsset}
               alt="Professor Fernando"
               loading="lazy"
               className="h-44 w-44 object-contain sm:h-52 sm:w-52"

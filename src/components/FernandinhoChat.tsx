@@ -19,7 +19,7 @@ import {
   PromptInputSubmit,
 } from "@/components/ai-elements/prompt-input";
 import { Shimmer } from "@/components/ai-elements/shimmer";
-import fernandinho from "@/assets/fernandinho-sticker.jpeg.asset.json";
+import fernandinho from "@/assets/fernandinho-sticker.jpeg";
 
 const SUGESTOES = [
   "O que posso comer na Fase 1?",
@@ -49,7 +49,7 @@ export function FernandinhoChat() {
           className="fixed top-4 right-4 z-50 rounded-full bg-card p-1 shadow-lg ring-1 ring-border active:scale-95"
         >
           <img
-            src={fernandinho.url}
+            src={fernandinho}
             alt="Fernandinho"
             className="h-10 w-10 rounded-full object-cover"
             loading="lazy"
@@ -61,7 +61,7 @@ export function FernandinhoChat() {
         <div className="fixed inset-0 z-50 flex flex-col bg-background">
           <header className="flex items-center gap-3 border-b border-border px-4 py-3">
             <img
-              src={fernandinho.url}
+              src={fernandinho}
               alt="Fernandinho"
               className="h-10 w-10 rounded-full object-cover"
             />
@@ -129,7 +129,7 @@ function ChatWindow({ initialMessages }: { initialMessages: UIMessage[] }) {
           {messages.length === 0 && (
             <div className="py-6 text-center">
               <img
-                src={fernandinho.url}
+                src={fernandinho}
                 alt="Fernandinho"
                 className="mx-auto h-28 w-28 rounded-2xl object-cover"
               />
