@@ -1,48 +1,48 @@
-import aula1Fase1Thumb from "@/assets/aula1-fase1-thumb.webp.asset.json";
-import fase1Banner from "@/assets/fase1-banner.webp.asset.json";
-import fase2Banner from "@/assets/fase2-banner.jpg.asset.json";
-import fase3Banner from "@/assets/fase3-banner.png.asset.json";
-import resumoAtnnsAris from "@/assets/resumo-atnns-aris.pdf.asset.json";
-import aulaBrigadeiro from "@/assets/aula2-brigadeiro.jpg.asset.json";
-import aulaNhoque from "@/assets/aula3-nhoque.jpg.asset.json";
-import aulaDoceBiomassa from "@/assets/aula4-doce-biomassa.jpg.asset.json";
-import aulaChevry from "@/assets/aula5-chevry.jpg.asset.json";
-import almoco1 from "@/assets/almoco-1-panqueca-beterraba.jpg.asset.json";
-import almoco2 from "@/assets/almoco-2-mocoto-cogumelos.jpg.asset.json";
-import almoco3 from "@/assets/almoco-3-file-5-graos.jpg.asset.json";
-import almoco4 from "@/assets/almoco-4-quiabo-agridoce.jpg.asset.json";
-import almoco5 from "@/assets/almoco-5-panqueca-ora-pro-nobis.jpg.asset.json";
-import almoco6 from "@/assets/almoco-6-almondega-quinoa.jpg.asset.json";
-import almoco7 from "@/assets/almoco-7-strogonoff-abobrinha.jpg.asset.json";
-import almoco8 from "@/assets/almoco-8-biomassa-nhoque.jpg.asset.json";
-import cafe1 from "@/assets/cafe-1-chips-banana.jpg.asset.json";
-import cafe2 from "@/assets/cafe-2-drink-tpm.jpg.asset.json";
-import drinkTpmPdf from "@/assets/drink-tpm-hibisco-gengibre.pdf.asset.json";
-import cafe3 from "@/assets/cafe-3-semente-abobora.jpg.asset.json";
-import cafe4 from "@/assets/cafe-4-leite-vegetal.jpg.asset.json";
-import jantar1 from "@/assets/jantar-1-risoto-quinoa.jpg.asset.json";
-import jantar2 from "@/assets/jantar-2-arroz-negro.jpg.asset.json";
-import jantar3 from "@/assets/jantar-3-enroladinho-almeirao.jpg.asset.json";
-import jantar4 from "@/assets/jantar-4-macarrao-abobrinha.jpg.asset.json";
-import pastas1 from "@/assets/pastas-1-molho-beterraba.jpg.asset.json";
-import pastas2 from "@/assets/pastas-2-chevry.jpg.asset.json";
-import pastas3 from "@/assets/pastas-3-maionese-dente-leao.jpg.asset.json";
-import pastas4 from "@/assets/pastas-4-erva-baleeira.jpg.asset.json";
-import pastas5 from "@/assets/pastas-5-pasta-amendoim.jpg.asset.json";
-import pastas6 from "@/assets/pastas-6-tahine.jpg.asset.json";
-import sobremesa1 from "@/assets/sobremesa-1-adocante-natural.jpg.asset.json";
-import sobremesa2 from "@/assets/sobremesa-2-sorbet-manga.jpg.asset.json";
-import sobremesa3 from "@/assets/sobremesa-3-doce-biomassa.jpg.asset.json";
-import sobremesa4 from "@/assets/sobremesa-4-brigadeiro-natural.jpg.asset.json";
-import fase2Aula1 from "@/assets/fase2-1-iogurte-parte1.jpg.asset.json";
-import fase2Aula2 from "@/assets/fase2-2-iogurte-parte2.jpg.asset.json";
-import iogurte20Receitas from "@/assets/iogurte-bariatrico-20-receitas.pdf.asset.json";
-import audioIogurte from "@/assets/audio-iogurte-bariatrico.ogg.asset.json";
-import bonus1Tintura from "@/assets/bonus1-tintura.jpg.asset.json";
-import bonus1Aloe from "@/assets/bonus1-aloe.jpg.asset.json";
-import bonus1Espinheira from "@/assets/bonus1-espinheira.jpg.asset.json";
-import bonus1Tonico from "@/assets/bonus1-tonico.jpg.asset.json";
-import planoColagenoPdf from "@/assets/plano-colageno-natural.pdf.asset.json";
+import aula1Fase1Thumb from "@/assets/aula1-fase1-thumb.webp";
+import fase1Banner from "@/assets/fase1-banner.webp";
+import fase2Banner from "@/assets/fase2-banner.jpg";
+import fase3Banner from "@/assets/fase3-banner.png";
+import resumoAtnnsAris from "@/assets/resumo-atnns-aris.pdf";
+import aulaBrigadeiro from "@/assets/aula2-brigadeiro.jpg";
+import aulaNhoque from "@/assets/aula3-nhoque.jpg";
+import aulaDoceBiomassa from "@/assets/aula4-doce-biomassa.jpg";
+import aulaChevry from "@/assets/aula5-chevry.jpg";
+import almoco1 from "@/assets/almoco-1-panqueca-beterraba.jpg";
+import almoco2 from "@/assets/almoco-2-mocoto-cogumelos.jpg";
+import almoco3 from "@/assets/almoco-3-file-5-graos.jpg";
+import almoco4 from "@/assets/almoco-4-quiabo-agridoce.jpg";
+import almoco5 from "@/assets/almoco-5-panqueca-ora-pro-nobis.jpg";
+import almoco6 from "@/assets/almoco-6-almondega-quinoa.jpg";
+import almoco7 from "@/assets/almoco-7-strogonoff-abobrinha.jpg";
+import almoco8 from "@/assets/almoco-8-biomassa-nhoque.jpg";
+import cafe1 from "@/assets/cafe-1-chips-banana.jpg";
+import cafe2 from "@/assets/cafe-2-drink-tpm.jpg";
+import drinkTpmPdf from "@/assets/drink-tpm-hibisco-gengibre.pdf";
+import cafe3 from "@/assets/cafe-3-semente-abobora.jpg";
+import cafe4 from "@/assets/cafe-4-leite-vegetal.jpg";
+import jantar1 from "@/assets/jantar-1-risoto-quinoa.jpg";
+import jantar2 from "@/assets/jantar-2-arroz-negro.jpg";
+import jantar3 from "@/assets/jantar-3-enroladinho-almeirao.jpg";
+import jantar4 from "@/assets/jantar-4-macarrao-abobrinha.jpg";
+import pastas1 from "@/assets/pastas-1-molho-beterraba.jpg";
+import pastas2 from "@/assets/pastas-2-chevry.jpg";
+import pastas3 from "@/assets/pastas-3-maionese-dente-leao.jpg";
+import pastas4 from "@/assets/pastas-4-erva-baleeira.jpg";
+import pastas5 from "@/assets/pastas-5-pasta-amendoim.jpg";
+import pastas6 from "@/assets/pastas-6-tahine.jpg";
+import sobremesa1 from "@/assets/sobremesa-1-adocante-natural.jpg";
+import sobremesa2 from "@/assets/sobremesa-2-sorbet-manga.jpg";
+import sobremesa3 from "@/assets/sobremesa-3-doce-biomassa.jpg";
+import sobremesa4 from "@/assets/sobremesa-4-brigadeiro-natural.jpg";
+import fase2Aula1 from "@/assets/fase2-1-iogurte-parte1.jpg";
+import fase2Aula2 from "@/assets/fase2-2-iogurte-parte2.jpg";
+import iogurte20Receitas from "@/assets/iogurte-bariatrico-20-receitas.pdf";
+import audioIogurte from "@/assets/audio-iogurte-bariatrico.ogg";
+import bonus1Tintura from "@/assets/bonus1-tintura.jpg";
+import bonus1Aloe from "@/assets/bonus1-aloe.jpg";
+import bonus1Espinheira from "@/assets/bonus1-espinheira.jpg";
+import bonus1Tonico from "@/assets/bonus1-tonico.jpg";
+import planoColagenoPdf from "@/assets/plano-colageno-natural.pdf";
 
 
 
@@ -111,7 +111,7 @@ export const CATEGORIAS: Categoria[] = [
         descricao:
           "Os primeiros 10 dias do protocolo. Reduza a inflamação e prepare o intestino para reativar seus hormônios.",
         liberada: true,
-        bannerUrl: fase1Banner.url,
+        bannerUrl: fase1Banner,
         aulas: [
           {
             id: "fase-1-intro",
@@ -121,11 +121,11 @@ export const CATEGORIAS: Categoria[] = [
             duracao: "12:40",
             cta: { label: "Iniciar Fase 1", to: "/quiz-fase-1", lockWhenQuizFase1Completo: true },
             vturbId: "vid-6a2e328f66b98f0059f888a4",
-            thumbnailUrl: aula1Fase1Thumb.url,
+            thumbnailUrl: aula1Fase1Thumb,
             materiais: [
               {
                 titulo: "Resumo: ATNNs e ARIs",
-                url: resumoAtnnsAris.url,
+                url: resumoAtnnsAris,
                 descricao: "PDF com o resumo da aula",
               },
             ],
@@ -140,9 +140,9 @@ export const CATEGORIAS: Categoria[] = [
         subtitulo: "Reativando a produção de GLP-1 e GIP",
         descricao: "O iogurte bariátrico e a reativação dos hormônios da saciedade.",
         liberada: true,
-        bannerUrl: fase2Banner.url,
+        bannerUrl: fase2Banner,
         audio: {
-          url: audioIogurte.url,
+          url: audioIogurte,
           mensagem: "Antes de assistir as aulas ouça esse áudio com muita atenção",
         },
         aulas: [
@@ -151,11 +151,11 @@ export const CATEGORIAS: Categoria[] = [
             titulo: "Aula 1 — Iogurte Bariátrico - Parte 1",
             descricao: "Aprenda a preparar o iogurte bariátrico: ingredientes, fermentação e os primeiros passos para reativar seus hormônios da saciedade.",
             vturbId: "vid-6a261f4b7ff4029957f55d07",
-            thumbnailUrl: fase2Aula1.url,
+            thumbnailUrl: fase2Aula1,
             materiais: [
               {
                 titulo: "Iogurte Bariátrico ARI — 20 Receitas",
-                url: iogurte20Receitas.url,
+                url: iogurte20Receitas,
                 descricao: "PDF com 20 receitas para incluir o iogurte bariátrico na sua rotina.",
               },
             ],
@@ -166,11 +166,11 @@ export const CATEGORIAS: Categoria[] = [
             titulo: "Aula 2 — Iogurte Bariátrico - Parte 2",
             descricao: "Finalização do iogurte bariátrico, dicas de conservação e formas práticas de incluir na sua rotina diária.",
             vturbId: "vid-6a345689453bd9d641ac00cf",
-            thumbnailUrl: fase2Aula2.url,
+            thumbnailUrl: fase2Aula2,
             materiais: [
               {
                 titulo: "Iogurte Bariátrico ARI — 20 Receitas",
-                url: iogurte20Receitas.url,
+                url: iogurte20Receitas,
                 descricao: "PDF com 20 receitas para incluir o iogurte bariátrico na sua rotina.",
               },
             ],
@@ -185,7 +185,7 @@ export const CATEGORIAS: Categoria[] = [
         subtitulo: "Regulando a microbiota intestinal",
         descricao: "Fibras, prebióticos e probióticos para uma microbiota saudável.",
         liberada: true,
-        bannerUrl: fase3Banner.url,
+        bannerUrl: fase3Banner,
         aulas: [
           {
             id: "fase-3-brigadeiro",
@@ -193,7 +193,7 @@ export const CATEGORIAS: Categoria[] = [
             descricao:
               "Aprenda a fazer um brigadeiro 100% natural, sem açúcar refinado e sem glúten — uma sobremesa que nutre e satisfaz.",
             vturbId: "vid-6a18f33771b3640e5e7ec1af",
-            thumbnailUrl: aulaBrigadeiro.url,
+            thumbnailUrl: aulaBrigadeiro,
             ...vazio,
           },
           {
@@ -202,7 +202,7 @@ export const CATEGORIAS: Categoria[] = [
             descricao:
               "Receita prática de nhoque feito com biomassa de banana verde, leve e funcional para sua rotina.",
             vturbId: "vid-6a6172795349fb69c3ddb9c7",
-            thumbnailUrl: aulaNhoque.url,
+            thumbnailUrl: aulaNhoque,
             ...vazio,
           },
           {
@@ -211,7 +211,7 @@ export const CATEGORIAS: Categoria[] = [
             descricao:
               "Um doce cremoso, saudável e naturalmente delicioso feito com biomassa de banana verde.",
             vturbId: "vid-6a18f28724e6a14613b372ed",
-            thumbnailUrl: aulaDoceBiomassa.url,
+            thumbnailUrl: aulaDoceBiomassa,
             ...vazio,
           },
           {
@@ -220,7 +220,7 @@ export const CATEGORIAS: Categoria[] = [
             descricao:
               "Aprenda a preparar um chevry natural, simples e nutritivo, para enriquecer suas refeições do dia a dia.",
             vturbId: "vid-6a18f1b5569a7d864c162d5a",
-            thumbnailUrl: aulaChevry.url,
+            thumbnailUrl: aulaChevry,
             ...vazio,
           },
         ],
@@ -242,7 +242,7 @@ export const CATEGORIAS: Categoria[] = [
         materiais: [
           {
             titulo: "Flacidez Nunca Mais — PDF",
-            url: planoColagenoPdf.url,
+            url: planoColagenoPdf,
             descricao: "Material completo em PDF para você baixar agora.",
           },
         ],
@@ -256,7 +256,7 @@ export const CATEGORIAS: Categoria[] = [
             materiais: [
               {
                 titulo: "Flacidez Nunca Mais — PDF",
-                url: planoColagenoPdf.url,
+                url: planoColagenoPdf,
                 descricao: "Material completo em PDF para você baixar agora.",
               },
             ],
@@ -271,7 +271,7 @@ export const CATEGORIAS: Categoria[] = [
             materiais: [
               {
                 titulo: "Flacidez Nunca Mais — PDF",
-                url: planoColagenoPdf.url,
+                url: planoColagenoPdf,
                 descricao: "Material completo em PDF para você baixar agora.",
               },
             ],
@@ -300,7 +300,7 @@ export const CATEGORIAS: Categoria[] = [
             titulo: "Aula 1 — Extrato de Plantas - Tintura",
             descricao: "Aprenda a preparar uma tintura (extrato de plantas) caseira para potencializar os benefícios de ervas medicinais de forma simples e eficaz.",
             vturbId: "vid-6a346efff54c50898d8f6a86",
-            thumbnailUrl: bonus1Tintura.url,
+            thumbnailUrl: bonus1Tintura,
             ...vazio,
           },
           {
@@ -308,7 +308,7 @@ export const CATEGORIAS: Categoria[] = [
             titulo: "Aula 2 — Pomada de Aloe Vera",
             descricao: "Receita prática de pomada hidratante e cicatrizante feita com Aloe Vera, ideal para cuidados diários com a pele.",
             vturbId: "vid-6a346ed39c2599c86e02c365",
-            thumbnailUrl: bonus1Aloe.url,
+            thumbnailUrl: bonus1Aloe,
             ...vazio,
           },
           {
@@ -316,7 +316,7 @@ export const CATEGORIAS: Categoria[] = [
             titulo: "Aula 3 — Fermentando Espinheira",
             descricao: "Descubra como fermentar espinheira para criar um suplemento natural rico em nutrientes e fácil de incluir na rotina.",
             vturbId: "vid-6a346e8998cf7db004874412",
-            thumbnailUrl: bonus1Espinheira.url,
+            thumbnailUrl: bonus1Espinheira,
             ...vazio,
           },
           {
@@ -324,7 +324,7 @@ export const CATEGORIAS: Categoria[] = [
             titulo: "Aula 4 — Tônico Capilar",
             descricao: "Tônico capilar caseiro para fortalecimento dos fios e saúde do couro cabeludo com ingredientes naturais acessíveis.",
             vturbId: "vid-6a346e68a7b4179972eb7117",
-            thumbnailUrl: bonus1Tonico.url,
+            thumbnailUrl: bonus1Tonico,
             ...vazio,
           },
         ],
@@ -342,7 +342,7 @@ export const CATEGORIAS: Categoria[] = [
             titulo: "Aula 1 — Chips de Banana Verde",
             descricao: "Aprenda a fazer chips crocantes de banana verde, um snack saudável e livre de ATNNs para o seu café da manhã.",
             vturbId: "vid-6a345418d1798d046586dd75",
-            thumbnailUrl: cafe1.url,
+            thumbnailUrl: cafe1,
             ...vazio,
           },
           {
@@ -350,12 +350,12 @@ export const CATEGORIAS: Categoria[] = [
             titulo: "Aula 2 — Drink TPM",
             descricao: "Uma bebida funcional e reconfortante, perfeita para os dias de TPM, com ingredientes que ajudam a reduzir a retenção de líquidos.",
             vturbId: "vid-6a3453e895b144aa5b3e3c38",
-            thumbnailUrl: cafe2.url,
+            thumbnailUrl: cafe2,
             ...vazio,
             materiais: [
               {
                 titulo: "Drink TPM — Hibisco e Gengibre (PDF)",
-                url: drinkTpmPdf.url,
+                url: drinkTpmPdf,
                 descricao: "Receita completa em PDF",
               },
             ],
@@ -365,7 +365,7 @@ export const CATEGORIAS: Categoria[] = [
             titulo: "Aula 3 — Semente de Abóbora",
             descricao: "Descubra como preparar e consumir sementes de abóbora de forma simples e nutritiva no seu café da manhã.",
             vturbId: "vid-6a3453c966e88e75bd60a519",
-            thumbnailUrl: cafe3.url,
+            thumbnailUrl: cafe3,
             ...vazio,
           },
           {
@@ -373,7 +373,7 @@ export const CATEGORIAS: Categoria[] = [
             titulo: "Aula 4 — Leite Vegetal",
             descricao: "Receita prática de leite vegetal caseiro, livre de lactose e rico em nutrientes para complementar suas refeições.",
             vturbId: "vid-6a3453a54dfbb6f4694d734f",
-            thumbnailUrl: cafe4.url,
+            thumbnailUrl: cafe4,
             ...vazio,
           },
         ],
@@ -391,7 +391,7 @@ export const CATEGORIAS: Categoria[] = [
             titulo: "Aula 1 — Panqueca de Beterraba",
             descricao: "Receita de panqueca de beterraba: leve, nutritiva e cheia de sabor para o almoço.",
             vturbId: "vid-6a3451d71bb1a6b688f3f884",
-            thumbnailUrl: almoco1.url,
+            thumbnailUrl: almoco1,
             ...vazio,
           },
           {
@@ -399,7 +399,7 @@ export const CATEGORIAS: Categoria[] = [
             titulo: "Aula 2 — Mocotó de Cogumelos",
             descricao: "Uma versão saudável e plant-based do clássico mocotó, feita com cogumelos.",
             vturbId: "vid-6a3451aae382c517d033bdbd",
-            thumbnailUrl: almoco2.url,
+            thumbnailUrl: almoco2,
             ...vazio,
           },
           {
@@ -407,7 +407,7 @@ export const CATEGORIAS: Categoria[] = [
             titulo: "Aula 3 — Filé de 5 Grãos",
             descricao: "Filé vegetal feito com 5 grãos: rico em proteínas, fibras e muito saboroso.",
             vturbId: "vid-6a34517b9c2599c86e02ac2a",
-            thumbnailUrl: almoco3.url,
+            thumbnailUrl: almoco3,
             ...vazio,
           },
           {
@@ -415,7 +415,7 @@ export const CATEGORIAS: Categoria[] = [
             titulo: "Aula 4 — Quiabo Agridoce de Jasmin",
             descricao: "Quiabo agridoce com arroz jasmin: combinação equilibrada e cheia de sabor.",
             vturbId: "vid-6a34513866e88e75bd60a26a",
-            thumbnailUrl: almoco4.url,
+            thumbnailUrl: almoco4,
             ...vazio,
           },
           {
@@ -423,7 +423,7 @@ export const CATEGORIAS: Categoria[] = [
             titulo: "Aula 5 — Panqueca de Ora-Pro-Nobis",
             descricao: "Panqueca verde feita com ora-pro-nobis, uma PANC rica em proteína vegetal.",
             vturbId: "vid-6a3451158a324fd18f7d9e41",
-            thumbnailUrl: almoco5.url,
+            thumbnailUrl: almoco5,
             ...vazio,
           },
           {
@@ -431,7 +431,7 @@ export const CATEGORIAS: Categoria[] = [
             titulo: "Aula 6 — Almôndega de Quinoa",
             descricao: "Almôndegas de quinoa ao molho de tomate: prática, nutritiva e deliciosa.",
             vturbId: "vid-6a3450f79c2599c86e02ab95",
-            thumbnailUrl: almoco6.url,
+            thumbnailUrl: almoco6,
             ...vazio,
           },
           {
@@ -439,7 +439,7 @@ export const CATEGORIAS: Categoria[] = [
             titulo: "Aula 7 — Strogonoff de Abobrinha",
             descricao: "Versão leve do strogonoff feito com abobrinha: cremoso, saboroso e saudável.",
             vturbId: "vid-6a3450c71bb1a6b688f3f7d4",
-            thumbnailUrl: almoco7.url,
+            thumbnailUrl: almoco7,
             ...vazio,
           },
           {
@@ -447,7 +447,7 @@ export const CATEGORIAS: Categoria[] = [
             titulo: "Aula 8 — Biomassa de Banana Verde",
             descricao: "Nhoque preparado com biomassa de banana verde: funcional, leve e delicioso.",
             vturbId: "vid-6a18f3aba1389edacac818a4",
-            thumbnailUrl: almoco8.url,
+            thumbnailUrl: almoco8,
             ...vazio,
           },
         ],
@@ -465,7 +465,7 @@ export const CATEGORIAS: Categoria[] = [
             titulo: "Aula 1 — Risoto de Quínoa",
             descricao: "Risoto cremoso de quinoa: nutritivo, leve e perfeito para um jantar saudável e reconfortante.",
             vturbId: "vid-6a345518453bd9d641abffd8",
-            thumbnailUrl: jantar1.url,
+            thumbnailUrl: jantar1,
             ...vazio,
           },
           {
@@ -473,7 +473,7 @@ export const CATEGORIAS: Categoria[] = [
             titulo: "Aula 2 — Arroz Negro",
             descricao: "Arroz negro com legumes: rico em antioxidantes e fibras, ideal para um jantar leve e nutritivo.",
             vturbId: "vid-6a3454f78a324fd18f7da2cb",
-            thumbnailUrl: jantar2.url,
+            thumbnailUrl: jantar2,
             ...vazio,
           },
           {
@@ -481,7 +481,7 @@ export const CATEGORIAS: Categoria[] = [
             titulo: "Aula 3 — Enroladinheiro Almeirão",
             descricao: "Enroladinhos de almeirão recheados: uma opção criativa, saborosa e cheia de nutrientes para o jantar.",
             vturbId: "vid-6a3454d54dfbb6f4694d7417",
-            thumbnailUrl: jantar3.url,
+            thumbnailUrl: jantar3,
             ...vazio,
           },
           {
@@ -489,7 +489,7 @@ export const CATEGORIAS: Categoria[] = [
             titulo: "Aula 4 — Macarrão de Abobrinha",
             descricao: "Macarrão de abobrinha ao molho de tomate: leve, funcional e delicioso para encerrar o dia com saúde.",
             vturbId: "vid-6a3454b8e382c517d033c0d7",
-            thumbnailUrl: jantar4.url,
+            thumbnailUrl: jantar4,
             ...vazio,
           },
         ],
@@ -507,7 +507,7 @@ export const CATEGORIAS: Categoria[] = [
             titulo: "Aula 1 — Adoçante Natural",
             descricao: "Aprenda a preparar um adoçante natural caseiro, livre de açúcar refinado e químicos, perfeito para substituir o açúcar em todas as suas receitas.",
             vturbId: "vid-6a34565bd1798d046586dfac",
-            thumbnailUrl: sobremesa1.url,
+            thumbnailUrl: sobremesa1,
             ...vazio,
           },
           {
@@ -515,7 +515,7 @@ export const CATEGORIAS: Categoria[] = [
             titulo: "Aula 2 — Sorbet de Manga",
             descricao: "Sorbet refrescante de manga feito com ingredientes naturais: uma sobremesa tropical, leve e deliciosa para saborear sem culpa.",
             vturbId: "vid-6a34564095b144aa5b3e3e18",
-            thumbnailUrl: sobremesa2.url,
+            thumbnailUrl: sobremesa2,
             ...vazio,
           },
           {
@@ -523,7 +523,7 @@ export const CATEGORIAS: Categoria[] = [
             titulo: "Aula 3 — Doce de Biomassa",
             descricao: "Doce cremoso e funcional feito com biomassa de banana verde: uma sobremesa saudável que nutre e satisfaz o paladar.",
             vturbId: "vid-6a345627e382c517d033c1a3",
-            thumbnailUrl: sobremesa3.url,
+            thumbnailUrl: sobremesa3,
             ...vazio,
           },
           {
@@ -531,7 +531,7 @@ export const CATEGORIAS: Categoria[] = [
             titulo: "Aula 4 — Brigadeiro Natural",
             descricao: "Brigadeiro 100% natural, sem açúcar refinado e sem glúten: a sobremesa brasileira que você ama, reinventada de forma saudável.",
             vturbId: "vid-6a34560b453bd9d641ac0070",
-            thumbnailUrl: sobremesa4.url,
+            thumbnailUrl: sobremesa4,
             ...vazio,
           },
         ],
@@ -549,7 +549,7 @@ export const CATEGORIAS: Categoria[] = [
             titulo: "Aula 1 — Molho de Beterraba",
             descricao: "Molho de beterraba caseiro: vibrante, nutritivo e perfeito para acompanhar saladas, bowls e pratos do dia a dia.",
             vturbId: "vid-6a3455ec8a324fd18f7da3a0",
-            thumbnailUrl: pastas1.url,
+            thumbnailUrl: pastas1,
             ...vazio,
           },
           {
@@ -557,7 +557,7 @@ export const CATEGORIAS: Categoria[] = [
             titulo: "Aula 2 — Chevry",
             descricao: "Aprenda a fazer chevry, uma pasta fermentada de castanhas ou sementes: versátil, probiótica e cheia de umami.",
             vturbId: "vid-6a3455ba4dfbb6f4694d74c7",
-            thumbnailUrl: pastas2.url,
+            thumbnailUrl: pastas2,
             ...vazio,
           },
           {
@@ -565,7 +565,7 @@ export const CATEGORIAS: Categoria[] = [
             titulo: "Aula 3 — Maionese de Dente de Leão",
             descricao: "Maionese verde e funcional feita com dente-de-leão: uma alternativa saudável e repleta de benefícios.",
             vturbId: "vid-6a34559c98cf7db00487345f",
-            thumbnailUrl: pastas3.url,
+            thumbnailUrl: pastas3,
             ...vazio,
           },
           {
@@ -573,7 +573,7 @@ export const CATEGORIAS: Categoria[] = [
             titulo: "Aula 4 — Erva Baleeira",
             descricao: "Descubra como preparar erva baleeira, um tempero medicinal que eleva o sabor e o valor nutricional das refeições.",
             vturbId: "vid-6a3455741bb1a6b688f3fb70",
-            thumbnailUrl: pastas4.url,
+            thumbnailUrl: pastas4,
             ...vazio,
           },
           {
@@ -581,7 +581,7 @@ export const CATEGORIAS: Categoria[] = [
             titulo: "Aula 5 — Pasta de Amendoim",
             descricao: "Pasta de amendoim caseira: sem aditivos, rica em proteína vegetal e óleos saudáveis — ideal para o dia a dia.",
             vturbId: "vid-6a345553453bd9d641ac0004",
-            thumbnailUrl: pastas5.url,
+            thumbnailUrl: pastas5,
             ...vazio,
           },
           {
@@ -589,7 +589,7 @@ export const CATEGORIAS: Categoria[] = [
             titulo: "Aula 6 — Tahine",
             descricao: "Tahine artesanal de gergelim: cremoso, nutritivo e indispensável para hummus, molhos e preparações orientais.",
             vturbId: "vid-6a3455394dfbb6f4694d7476",
-            thumbnailUrl: pastas6.url,
+            thumbnailUrl: pastas6,
             ...vazio,
           },
         ],

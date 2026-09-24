@@ -4,8 +4,8 @@ import { useQuery } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 import { getDashboard } from "@/lib/active.functions";
 import { Download, FileDown, ArrowRight } from "lucide-react";
-import planoAlimentarPdf from "@/assets/plano-alimentar-10-dias-ari.pdf.asset.json";
-import capaProtocolo from "@/assets/capa-protocolo-10-dias.jpg.asset.json";
+import planoAlimentarPdf from "@/assets/plano-alimentar-10-dias-ari.pdf";
+import capaProtocolo from "@/assets/capa-protocolo-10-dias.jpg";
 
 export const Route = createFileRoute("/_authenticated/seu-protocolo")({
   component: SeuProtocolo,
@@ -31,7 +31,7 @@ function SeuProtocolo() {
 
       <div className="mt-6 rounded-2xl border border-border bg-card p-4">
         <img
-          src={capaProtocolo.url}
+          src={capaProtocolo}
           alt="Capa do Protocolo de 10 Dias Personalizado"
           className="w-full rounded-xl object-cover"
           width={1024}
@@ -47,7 +47,7 @@ function SeuProtocolo() {
             </p>
           </div>
           <a
-            href={planoAlimentarPdf.url}
+            href={planoAlimentarPdf}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 rounded-xl bg-gold px-4 py-2.5 text-sm font-semibold text-gold-foreground active:scale-[0.97]"

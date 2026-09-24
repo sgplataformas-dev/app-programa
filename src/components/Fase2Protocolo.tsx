@@ -3,7 +3,7 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { ChevronLeft, Download, Sunrise, UtensilsCrossed, Moon, Info } from "lucide-react";
 import { getIntakeMaisRecente } from "@/lib/active.functions";
-import iogurte20Receitas from "@/assets/iogurte-bariatrico-20-receitas.pdf.asset.json";
+import iogurte20Receitas from "@/assets/iogurte-bariatrico-20-receitas.pdf";
 
 type Recomendacao = {
   colheres: number;
@@ -125,7 +125,7 @@ export function Fase2Protocolo() {
           gostosa e variada.
         </p>
         <a
-          href={iogurte20Receitas.url}
+          href={iogurte20Receitas}
           target="_blank"
           rel="noopener noreferrer"
           className="mt-3 flex items-center gap-3 rounded-2xl border border-border bg-card p-4 transition hover:border-primary"
