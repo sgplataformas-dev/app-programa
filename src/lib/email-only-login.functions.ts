@@ -43,7 +43,7 @@ export const signInWithEmailOnly = createServerFn({ method: "POST" })
 
     // 1) Verifica compra aprovada na base principal
     const { data: purchases, error: purchasesErr } = await supabaseAdmin
-      .from("purchases")
+      .from("programa_active_purchases")
       .select("payment_status, payt_order_id, updated_at, purchase_date, created_at")
       .eq("email", email);
 

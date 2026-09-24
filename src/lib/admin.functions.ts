@@ -154,7 +154,7 @@ export const listUsersAdmin = createServerFn({ method: "POST" })
         : Promise.resolve({ data: [] as any[] }),
       emails.length
         ? supabaseAdmin
-            .from("purchases")
+            .from("programa_active_purchases")
             .select("email, payment_status, purchase_date, product_name, payt_order_id")
             .in("email", emails)
         : Promise.resolve({ data: [] as any[] }),
@@ -218,7 +218,7 @@ export const listUsersAdmin = createServerFn({ method: "POST" })
     if (data.page === 1) {
       const knownEmails = new Set(users.map((u) => (u.email ?? "").toLowerCase()));
       const { data: orphanPurchases } = await supabaseAdmin
-        .from("purchases")
+        .from("programa_active_purchases")
         .select("email, product_name, purchase_date, payment_status, payt_order_id, raw_payload")
         .order("purchase_date", { ascending: false })
         .limit(500);
@@ -500,7 +500,7 @@ export const bulkProvisionPendingLeads = createServerFn({ method: "POST" })
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
 
     const { data: pending, error: pendErr } = await supabaseAdmin
-      .from("purchases")
+      .from("programa_active_purchases")
       .select("id, email, payt_order_id, raw_payload, purchase_date")
       .is("user_id", null)
       .order("purchase_date", { ascending: false })
@@ -574,7 +574,7 @@ export const bulkProvisionPendingLeads = createServerFn({ method: "POST" })
 
         if (userId) {
           await supabaseAdmin
-            .from("purchases")
+            .from("programa_active_purchases")
             .update({ user_id: userId })
             .eq("id", row.id);
           linked++;
@@ -585,7 +585,7 @@ export const bulkProvisionPendingLeads = createServerFn({ method: "POST" })
     }
 
     const { count: remaining } = await supabaseAdmin
-      .from("purchases")
+      .from("programa_active_purchases")
       .select("id", { count: "exact", head: true })
       .is("user_id", null);
 
@@ -642,7 +642,7 @@ export const bulkResendAccess = createServerFn({ method: "POST" })
       const step = 1000;
       while (true) {
         const { data: rows, error } = await supabaseAdmin
-          .from("purchases")
+          .from("programa_active_purchases")
           .select("email, payment_status")
           .range(from, from + step - 1);
         if (error) throw error;
@@ -817,7 +817,7 @@ export const bulkCreateAccessByEmails = createServerFn({ method: "POST" })
         // Vincula purchases órfãs ao user_id
         if (userId) {
           const { data: linked, error: linkErr } = await supabaseAdmin
-            .from("purchases")
+            .from("programa_active_purchases")
             .update({ user_id: userId })
             .eq("email", email)
             .is("user_id", null)

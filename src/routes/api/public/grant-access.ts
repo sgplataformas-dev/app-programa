@@ -58,7 +58,7 @@ export const Route = createFileRoute('/api/public/grant-access')({
         const { supabaseAdmin } = await import('@/integrations/supabase/client.server')
 
         const { data: purchases, error } = await supabaseAdmin
-          .from('purchases')
+          .from('programa_active_purchases')
           .select('payment_status, payt_order_id, updated_at, purchase_date, created_at, raw_payload')
           .eq('email', email)
 

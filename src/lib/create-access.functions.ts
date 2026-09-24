@@ -50,7 +50,7 @@ export const createAccessWithPassword = createServerFn({ method: "POST" })
 
     // 1) Verifica compra aprovada
     const { data: purchases, error: purchasesErr } = await supabaseAdmin
-      .from("purchases")
+      .from("programa_active_purchases")
       .select("payment_status")
       .eq("email", email);
 

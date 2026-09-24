@@ -222,7 +222,7 @@ function AdminPanel() {
       .channel("admin-live")
       .on(
         "postgres_changes",
-        { event: "*", schema: "public", table: "purchases" },
+        { event: "*", schema: "public", table: "programa_active_purchases" },
         invalidate,
       )
       .on(

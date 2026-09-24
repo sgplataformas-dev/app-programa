@@ -197,7 +197,7 @@ export const Route = createFileRoute('/api/public/webhooks/payt')({
             const { data: updatedPurchases } = await retry(
               async () =>
                 await supabaseAdmin
-                  .from('purchases')
+                  .from('programa_active_purchases')
                   .update({
                     payment_status: status,
                     raw_payload: raw as any,
@@ -218,7 +218,7 @@ export const Route = createFileRoute('/api/public/webhooks/payt')({
               const { data: stillActive } = await retry(
                 async () =>
                   await supabaseAdmin
-                    .from('purchases')
+                    .from('programa_active_purchases')
                     .select('id, payment_status, payt_order_id, updated_at, purchase_date, created_at')
                     .eq('email', email),
                 { retries: 3, label: 'payt-refund-check-active' },
@@ -284,7 +284,7 @@ export const Route = createFileRoute('/api/public/webhooks/payt')({
           const { error: initialPurchaseErr } = await retry(
             async () =>
               await supabaseAdmin
-                .from('purchases')
+                .from('programa_active_purchases')
                 .upsert(
                   {
                     email,

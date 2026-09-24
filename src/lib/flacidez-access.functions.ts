@@ -51,7 +51,7 @@ export const hasFlacidezAccess = createServerFn({ method: "GET" })
 
     // 1) Base principal
     const { data: purchases, error } = await supabaseAdmin
-      .from("purchases")
+      .from("programa_active_purchases")
       .select("product_name, payment_status, raw_payload")
       .eq("email", email);
     if (error) console.error("[flacidez-access] purchases error", error);

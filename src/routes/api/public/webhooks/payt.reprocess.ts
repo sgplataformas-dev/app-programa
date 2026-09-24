@@ -101,7 +101,7 @@ async function runReprocess(limit: number) {
         typeof body?.product?.price === 'number'
           ? Number((body.product.price / 100).toFixed(2))
           : null
-      await supabaseAdmin.from('purchases').upsert(
+      await supabaseAdmin.from('programa_active_purchases').upsert(
         {
           email,
           payt_order_id: cartId,

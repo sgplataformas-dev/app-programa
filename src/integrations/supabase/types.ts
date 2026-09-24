@@ -480,7 +480,7 @@ export type Database = {
         }
         Relationships: []
       }
-      purchases: {
+      programa_active_purchases: {
         Row: {
           amount: number | null
           created_at: string

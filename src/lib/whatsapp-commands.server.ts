@@ -41,7 +41,7 @@ export async function handleLiberar(
 
   const loadPurchases = async () =>
     await supabaseAdmin
-      .from("purchases")
+      .from("programa_active_purchases")
       .select("id, payment_status, payt_order_id, updated_at, purchase_date, created_at, raw_payload")
       .eq("email", email);
 
@@ -55,7 +55,7 @@ export async function handleLiberar(
   // Se a Payt não entregou o webhook, mas o payload da venda veio junto
   // (n8n), registramos a compra aqui para não travar a liberação.
   if ((!purchases || purchases.length === 0) && sale?.cartId) {
-    const { error: upsertErr } = await supabaseAdmin.from("purchases").upsert(
+    const { error: upsertErr } = await supabaseAdmin.from("programa_active_purchases").upsert(
       {
         email,
         payt_order_id: String(sale.cartId),
@@ -169,7 +169,7 @@ export async function handleStatus(
   const [userId, purchases] = await Promise.all([
     findUserIdByEmail(supabaseAdmin, email),
     supabaseAdmin
-      .from("purchases")
+      .from("programa_active_purchases")
       .select("payment_status, updated_at, purchase_date, created_at")
       .eq("email", email)
       .then((r: any) => r.data),

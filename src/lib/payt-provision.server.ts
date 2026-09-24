@@ -148,7 +148,7 @@ export async function provisionAccess(
     const { error: linkErr } = await retry(
       async () =>
         await supabaseAdmin
-          .from("purchases")
+          .from("programa_active_purchases")
           .update({ user_id: userId })
           .eq("payt_order_id", String(cartId)),
       { retries: 3, label: "payt-link-user" },
@@ -159,7 +159,7 @@ export async function provisionAccess(
   if (userId) {
     // Vincula também qualquer outra compra do mesmo e-mail que ficou órfã.
     await supabaseAdmin
-      .from("purchases")
+      .from("programa_active_purchases")
       .update({ user_id: userId })
       .eq("email", normalized)
       .is("user_id", null);
