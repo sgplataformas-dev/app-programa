@@ -33,7 +33,12 @@ function isRetryableError(err: unknown): boolean {
   if (["etimedout", "econnreset", "econnrefused", "eai_again", "und_err_socket"].includes(code)) {
     return true;
   }
+  // PGRST205: PostgREST não achou a tabela no cache de schema dele — visto
+  // como um blip intermitente neste projeto (a mesma consulta funciona
+  // segundos depois, sem nenhuma mudança de schema real). Retry resolve.
+  if (code === "pgrst205") return true;
   const msg = String(anyErr.message ?? err).toLowerCase();
+  if (msg.includes("schema cache")) return true;
   return RETRYABLE_MESSAGE_FRAGMENTS.some((frag) => msg.includes(frag));
 }
 

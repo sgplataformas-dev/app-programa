@@ -1,5 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
+import { retry } from "@/lib/http-retry";
 import { z } from "zod";
 
 function hojeISO() {
@@ -215,15 +216,26 @@ export const salvarIntake = createServerFn({ method: "POST" })
   .handler(async ({ data, context }) => {
     const { supabase, userId } = context;
 
-    const intake = await supabase.from("intake_responses").insert({ user_id: userId, respostas: data });
-    if (intake.error) throw new Error(intake.error.message);
+    await retry(
+      async () => {
+        const { error } = await supabase.from("intake_responses").insert({ user_id: userId, respostas: data });
+        if (error) throw error;
+      },
+      { retries: 4, label: "salvar-intake-insert" },
+    );
 
-    const prog = await supabase
-      .from("user_progress")
-      .select("user_id, pesos, protocolo_iniciado_em")
-      .eq("user_id", userId)
-      .maybeSingle();
-    if (prog.error) throw new Error(prog.error.message);
+    const prog = await retry(
+      async () => {
+        const res = await supabase
+          .from("user_progress")
+          .select("user_id, pesos, protocolo_iniciado_em")
+          .eq("user_id", userId)
+          .maybeSingle();
+        if (res.error) throw res.error;
+        return res;
+      },
+      { retries: 4, label: "salvar-intake-progress-select" },
+    );
 
     const hoje = hojeISO();
     const novoPeso = { data: hoje, peso: data.peso };
@@ -232,15 +244,20 @@ export const salvarIntake = createServerFn({ method: "POST" })
       : [];
     const pesos = [...pesosAtuais.filter((p) => p.data !== hoje), novoPeso];
 
-    const progress = await supabase.from("user_progress").upsert(
-      {
-        user_id: userId,
-        protocolo_iniciado_em: prog.data?.protocolo_iniciado_em ?? new Date().toISOString(),
-        pesos: pesos as unknown as never,
+    await retry(
+      async () => {
+        const { error } = await supabase.from("user_progress").upsert(
+          {
+            user_id: userId,
+            protocolo_iniciado_em: prog.data?.protocolo_iniciado_em ?? new Date().toISOString(),
+            pesos: pesos as unknown as never,
+          },
+          { onConflict: "user_id" },
+        );
+        if (error) throw error;
       },
-      { onConflict: "user_id" },
+      { retries: 4, label: "salvar-intake-progress-upsert" },
     );
-    if (progress.error) throw new Error(progress.error.message);
 
     return { ok: true };
   });
@@ -269,26 +286,33 @@ export const salvarQuizFase1 = createServerFn({ method: "POST" })
   .inputValidator((d: unknown) => quizSchema.parse(d))
   .handler(async ({ data, context }) => {
     const { supabase, userId } = context;
-    const prog = await supabase
-      .from("user_progress")
-      .select("user_id")
-      .eq("user_id", userId)
-      .maybeSingle();
+    const prog = await retry(
+      async () => {
+        const res = await supabase.from("user_progress").select("user_id").eq("user_id", userId).maybeSingle();
+        if (res.error) throw res.error;
+        return res;
+      },
+      { retries: 4, label: "quiz-fase1-progress-select" },
+    );
 
     const payload = {
       preferencias_alimentares: data as unknown as never,
       quiz_fase1_completo: true,
     };
 
-    if (prog.data) {
-      await supabase.from("user_progress").update(payload).eq("user_id", userId);
-    } else {
-      await supabase.from("user_progress").insert({
-        user_id: userId,
-        protocolo_iniciado_em: new Date().toISOString(),
-        ...payload,
-      });
-    }
+    await retry(
+      async () => {
+        const { error } = prog.data
+          ? await supabase.from("user_progress").update(payload).eq("user_id", userId)
+          : await supabase.from("user_progress").insert({
+              user_id: userId,
+              protocolo_iniciado_em: new Date().toISOString(),
+              ...payload,
+            });
+        if (error) throw error;
+      },
+      { retries: 4, label: "quiz-fase1-progress-save" },
+    );
     return { ok: true };
   });
 

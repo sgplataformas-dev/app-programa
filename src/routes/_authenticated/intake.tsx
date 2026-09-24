@@ -29,6 +29,7 @@ import {
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { captureMonitoringEvent } from "@/lib/monitoring";
+import { retry } from "@/lib/http-retry";
 
 import bristol1 from "@/assets/bristol-1.webp";
 import bristol2 from "@/assets/bristol-2.webp";
@@ -390,7 +391,7 @@ function IntakePage() {
     try {
       await withTimeout(
         salvar({ data: payload as never, signal: controller.signal } as never),
-        10000,
+        20000,
         () => controller.abort(),
       );
       return;
@@ -401,7 +402,7 @@ function IntakePage() {
         route: "/intake",
         action: "salvar_anamnese_server_fn",
       });
-      await withTimeout(salvarIntakeNoCliente(payload), 10000);
+      await withTimeout(salvarIntakeNoCliente(payload), 20000);
     }
   }
 
@@ -566,17 +567,28 @@ async function salvarIntakeNoCliente(payload: IntakeRespostas) {
   const userId = sessionData.session?.user.id;
   if (!userId) throw new Error("Sessão não encontrada para salvar a avaliação.");
 
-  const intake = await supabase
-    .from("intake_responses")
-    .insert({ user_id: userId, respostas: payload as never });
-  if (intake.error) throw intake.error;
+  await retry(
+    async () => {
+      const { error } = await supabase
+        .from("intake_responses")
+        .insert({ user_id: userId, respostas: payload as never });
+      if (error) throw error;
+    },
+    { retries: 4, label: "intake-cliente-insert" },
+  );
 
-  const prog = await supabase
-    .from("user_progress")
-    .select("user_id, pesos, protocolo_iniciado_em")
-    .eq("user_id", userId)
-    .maybeSingle();
-  if (prog.error) throw prog.error;
+  const prog = await retry(
+    async () => {
+      const res = await supabase
+        .from("user_progress")
+        .select("user_id, pesos, protocolo_iniciado_em")
+        .eq("user_id", userId)
+        .maybeSingle();
+      if (res.error) throw res.error;
+      return res;
+    },
+    { retries: 4, label: "intake-cliente-progress-select" },
+  );
 
   const hoje = new Date().toISOString().slice(0, 10);
   const pesosAtuais: Array<{ data: string; peso: number }> = Array.isArray(prog.data?.pesos)
@@ -587,15 +599,20 @@ async function salvarIntakeNoCliente(payload: IntakeRespostas) {
     { data: hoje, peso: payload.peso ?? 0 },
   ];
 
-  const progress = await supabase.from("user_progress").upsert(
-    {
-      user_id: userId,
-      protocolo_iniciado_em: prog.data?.protocolo_iniciado_em ?? new Date().toISOString(),
-      pesos: pesos as unknown as never,
+  await retry(
+    async () => {
+      const { error } = await supabase.from("user_progress").upsert(
+        {
+          user_id: userId,
+          protocolo_iniciado_em: prog.data?.protocolo_iniciado_em ?? new Date().toISOString(),
+          pesos: pesos as unknown as never,
+        },
+        { onConflict: "user_id" },
+      );
+      if (error) throw error;
     },
-    { onConflict: "user_id" },
+    { retries: 4, label: "intake-cliente-progress-upsert" },
   );
-  if (progress.error) throw progress.error;
 }
 
 function NumInput({
