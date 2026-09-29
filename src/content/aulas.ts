@@ -37,6 +37,7 @@ import sobremesa4 from "@/assets/sobremesa-4-brigadeiro-natural.jpg";
 import fase2Aula1 from "@/assets/fase2-1-iogurte-parte1.jpg";
 import fase2Aula2 from "@/assets/fase2-2-iogurte-parte2.jpg";
 import iogurte20Receitas from "@/assets/iogurte-bariatrico-20-receitas.pdf";
+import iogurteBariatricoReceita from "@/assets/iogurte-bariatrico-receita.pdf";
 import audioIogurte from "@/assets/audio-iogurte-bariatrico.ogg";
 import bonus1Tintura from "@/assets/bonus1-tintura.jpg";
 import bonus1Aloe from "@/assets/bonus1-aloe.jpg";
@@ -153,6 +154,11 @@ export const CATEGORIAS: Categoria[] = [
             vturbId: "vid-6a261f4b7ff4029957f55d07",
             thumbnailUrl: fase2Aula1,
             materiais: [
+              {
+                titulo: "Aqui está uma explicação escrita de como fazer o Iogurte Bariatrico",
+                url: iogurteBariatricoReceita,
+                descricao: "Receita passo a passo do iogurte bariátrico em PDF.",
+              },
               {
                 titulo: "Iogurte Bariátrico ARI — 20 Receitas",
                 url: iogurte20Receitas,
