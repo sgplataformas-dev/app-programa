@@ -44,7 +44,7 @@ export const signInWithEmailOnly = createServerFn({ method: "POST" })
     // 1) Verifica compra aprovada na base principal
     const { data: purchases, error: purchasesErr } = await supabaseAdmin
       .from("programa_active_purchases")
-      .select("payment_status, payt_order_id, updated_at, purchase_date, created_at")
+      .select("payment_status, payt_order_id, product_name, updated_at, purchase_date, created_at")
       .eq("email", email);
 
     if (purchasesErr) {
@@ -52,9 +52,24 @@ export const signInWithEmailOnly = createServerFn({ method: "POST" })
       return { ok: false as const, reason: "server_error" as const };
     }
 
-    const refunded =
-      (purchases ?? []).length > 0 && !hasActiveAccess(purchases as any);
     let hasActive = hasActiveAccess(purchases as any);
+
+    // 1a) Rede de segurança: a Payt as vezes so manda o webhook do produto
+    // base (Programa Active) pra tabela do dashboard (outro sistema, mesmo
+    // banco), nao pra esta — sem essa checagem, um reembolso/chargeback de
+    // OUTRO produto (ex.: upsell Flacidez) podia negar acesso a quem tem a
+    // compra principal aprovada la, so que nunca refletida aqui.
+    if (!hasActive) {
+      const { data: dashboardApproved } = await supabaseAdmin
+        .from("purchases")
+        .select("id")
+        .eq("email", email)
+        .eq("status", "approved")
+        .limit(1);
+      if (dashboardApproved && dashboardApproved.length > 0) hasActive = true;
+    }
+
+    const refunded = (purchases ?? []).length > 0 && !hasActive;
 
     // 1b) Fallback — consulta bases externas (vendas_payt / vendas_aprovacao)
     // Estorno/chargeback tem precedência: não consultamos bases externas,

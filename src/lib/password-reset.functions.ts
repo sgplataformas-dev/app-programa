@@ -1,16 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-
-const REFUND_STATUSES = new Set([
-  "refunded",
-  "refund",
-  "chargeback",
-  "charged_back",
-  "reversed",
-  "disputed",
-  "canceled",
-  "cancelled",
-]);
+import { hasActiveAccess } from "@/lib/purchase-access";
 
 const inputSchema = z.object({
   email: z.string().trim().toLowerCase().email().max(255),
@@ -25,7 +15,7 @@ export const requestPasswordReset = createServerFn({ method: "POST" })
     // 1) Verifica se há alguma compra associada ao e-mail
     const { data: purchases, error: purchasesErr } = await supabaseAdmin
       .from("programa_active_purchases")
-      .select("payment_status")
+      .select("payment_status, payt_order_id, product_name, updated_at, purchase_date, created_at")
       .eq("email", email);
 
     if (purchasesErr) {
@@ -37,11 +27,7 @@ export const requestPasswordReset = createServerFn({ method: "POST" })
       return { ok: false, reason: "no_purchase" as const };
     }
 
-    // Se TODAS as compras estiverem com status de reembolso/cancelamento, bloquear
-    const hasActive = purchases.some(
-      (p) => !REFUND_STATUSES.has(String(p.payment_status ?? "").toLowerCase()),
-    );
-    if (!hasActive) {
+    if (!hasActiveAccess(purchases as any)) {
       return { ok: false, reason: "refunded" as const };
     }
 
@@ -87,7 +73,7 @@ export const requestPasswordReset = createServerFn({ method: "POST" })
     const origin =
       process.env.PUBLIC_APP_URL ??
       process.env.SITE_URL ??
-      "https://programa-active.com";
+      "https://app-programa.vercel.app";
     const redirectTo = `${origin}/reset-password`;
 
     const { error: linkErr } = await supabaseAdmin.auth.admin.generateLink({

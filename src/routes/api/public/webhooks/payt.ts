@@ -219,7 +219,7 @@ export const Route = createFileRoute('/api/public/webhooks/payt')({
                 async () =>
                   await supabaseAdmin
                     .from('programa_active_purchases')
-                    .select('id, payment_status, payt_order_id, updated_at, purchase_date, created_at')
+                    .select('id, payment_status, payt_order_id, product_name, updated_at, purchase_date, created_at')
                     .eq('email', email),
                 { retries: 3, label: 'payt-refund-check-active' },
               )

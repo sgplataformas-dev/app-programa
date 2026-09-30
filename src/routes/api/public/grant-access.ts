@@ -59,7 +59,7 @@ export const Route = createFileRoute('/api/public/grant-access')({
 
         const { data: purchases, error } = await supabaseAdmin
           .from('programa_active_purchases')
-          .select('payment_status, payt_order_id, updated_at, purchase_date, created_at, raw_payload')
+          .select('payment_status, payt_order_id, product_name, updated_at, purchase_date, created_at, raw_payload')
           .eq('email', email)
 
         if (error) {

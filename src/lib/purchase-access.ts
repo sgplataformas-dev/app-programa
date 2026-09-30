@@ -21,6 +21,7 @@ export type PurchaseRow = {
   updated_at?: string | null;
   purchase_date?: string | null;
   created_at?: string | null;
+  product_name?: string | null;
 };
 
 const norm = (v: unknown) => String(v ?? "").trim().toLowerCase();
@@ -40,29 +41,50 @@ function isLegacyImport(row: PurchaseRow) {
 }
 
 /**
- * Regra de acesso: vale o evento de pagamento mais recente.
- * Se o último evento real for reembolso/chargeback, o acesso é negado —
- * mesmo que existam registros aprovados anteriores (ou cópias legadas).
+ * Regra de acesso: vale o evento de pagamento mais recente — mas avaliado
+ * POR PRODUTO, nunca misturando produtos diferentes. Reembolso/chargeback de
+ * um produto (ex.: Flacidez Nunca Mais) nunca derruba o login de quem ainda
+ * tem outro produto (ex.: Programa Active) com pagamento ativo — cada
+ * produto entra numa "família" separada e basta UMA família ativa pra manter
+ * o acesso à plataforma. O gate de conteúdo específico de cada produto
+ * (ex.: hasFlacidezAccess) continua responsável por checar aquele produto
+ * sozinho.
  */
 export function hasActiveAccess(rows: PurchaseRow[] | null | undefined): boolean {
   const list = rows ?? [];
   if (list.length === 0) return false;
 
   const real = list.filter((r) => !isLegacyImport(r));
-  const refunds = real.filter((r) => REFUND_STATUSES.has(norm(r.payment_status)));
-
-  if (refunds.length === 0) {
-    // Sem estorno: basta uma compra que não esteja cancelada/expirada.
+  if (real.length === 0) {
+    // só linhas legadas (importação) — comportamento anterior: qualquer uma
+    // não cancelada/expirada já basta.
     return list.some((r) => !INACTIVE_STATUSES.has(norm(r.payment_status)));
   }
 
-  const lastRefund = Math.max(...refunds.map(rowTime));
-  const lastActive = Math.max(
-    0,
-    ...real
-      .filter((r) => !INACTIVE_STATUSES.has(norm(r.payment_status)))
-      .map(rowTime),
-  );
+  const groups = new Map<string, PurchaseRow[]>();
+  for (const r of real) {
+    const key = norm(r.product_name) || "__sem_produto__";
+    const arr = groups.get(key) ?? [];
+    arr.push(r);
+    groups.set(key, arr);
+  }
 
-  return lastActive > lastRefund;
+  for (const groupRows of groups.values()) {
+    const refunds = groupRows.filter((r) => REFUND_STATUSES.has(norm(r.payment_status)));
+
+    if (refunds.length === 0) {
+      // Esse produto nunca teve estorno: basta uma compra ativa dele.
+      if (groupRows.some((r) => !INACTIVE_STATUSES.has(norm(r.payment_status)))) return true;
+      continue;
+    }
+
+    const lastRefund = Math.max(...refunds.map(rowTime));
+    const lastActive = Math.max(
+      0,
+      ...groupRows.filter((r) => !INACTIVE_STATUSES.has(norm(r.payment_status))).map(rowTime),
+    );
+    if (lastActive > lastRefund) return true;
+  }
+
+  return false;
 }
