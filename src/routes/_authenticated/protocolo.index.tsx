@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Download, FileDown } from "lucide-react";
 import {
   INGREDIENTES_CORINGA,
   NOTAS_FINAIS,
@@ -12,6 +13,7 @@ import {
   TROCAS_POR_DIA,
   type Troca,
 } from "@/content/trocas-hipoalergenicas";
+import listaDeComprasPdf from "@/assets/lista-de-compras-ari.pdf";
 
 export const Route = createFileRoute("/_authenticated/protocolo/")({
   component: Protocolo,
@@ -51,6 +53,30 @@ function Protocolo() {
             </li>
           ))}
         </ul>
+      </section>
+
+      <section className="mt-6 rounded-2xl border border-border bg-card p-5">
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex-1">
+            <h2 className="text-base font-semibold leading-tight">Lista de Compras Inteligente</h2>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Checklist completo (Plano 10 Dias + Iogurte Bariátrico), organizado por categoria.
+            </p>
+            <p className="mt-2 text-xs text-muted-foreground flex items-center gap-1">
+              <FileDown className="h-3.5 w-3.5" />
+              Toque no botão para baixar
+            </p>
+          </div>
+          <a
+            href={listaDeComprasPdf}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex shrink-0 items-center gap-2 rounded-xl bg-gold px-4 py-2.5 text-sm font-semibold text-gold-foreground active:scale-[0.97]"
+          >
+            <Download className="h-4 w-4" />
+            Baixar PDF
+          </a>
+        </div>
       </section>
 
       <section className="mt-6 rounded-2xl border border-gold bg-gold/10 p-5">
