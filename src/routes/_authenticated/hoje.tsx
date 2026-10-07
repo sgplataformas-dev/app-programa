@@ -1,5 +1,5 @@
 import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { useQuery } from "@tanstack/react-query";
 import {
@@ -10,9 +10,11 @@ import {
   Lock,
   Play,
   MessageCircle,
+  Search,
 } from "lucide-react";
 import { getDashboard } from "@/lib/active.functions";
 import { findAula, CATEGORIAS, type Modulo } from "@/content/aulas";
+import { searchContent, type SearchResult } from "@/content/search-index";
 import { captureMonitoringEvent } from "@/lib/monitoring";
 import fernandinhoStickerAsset from "@/assets/fernandinho-sticker.jpeg";
 
@@ -97,6 +99,8 @@ function Hoje() {
         Você está na <strong className="text-foreground">área de alunos</strong> do Programa
         Active — esse é o espaço onde você pode acessar as video aulas do professor Fernando.
       </p>
+
+      <ConteudoSearch />
 
       {/* Banner aulas — continue assistindo */}
       {ultimaAulaId ? (
@@ -202,6 +206,79 @@ function Hoje() {
           </div>
         </div>
       </section>
+    </div>
+  );
+}
+
+/**
+ * Busca no topo do /hoje: digita um tema e cai na aula/página certa. Mostra
+ * um dropdown com os melhores resultados conforme digita (não redireciona
+ * sozinho pra evitar "chutar errado" — Enter ou clique num resultado leva).
+ */
+function ConteudoSearch() {
+  const navigate = useNavigate();
+  const [query, setQuery] = useState("");
+  const [open, setOpen] = useState(false);
+  const results = query.trim() ? searchContent(query) : [];
+
+  function irPara(result: SearchResult) {
+    // `to` é dinâmico (vem do índice de busca, não de uma rota literal
+    // conhecida em tempo de compilação) — mesmo escape hatch já usado em
+    // aulas.$lessonId.tsx (`navigate({ to: aula.cta!.to as string })`).
+    navigate({ to: result.to, params: result.params } as unknown as Parameters<typeof navigate>[0]);
+    setQuery("");
+    setOpen(false);
+  }
+
+  function onSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (results.length > 0) irPara(results[0]);
+  }
+
+  return (
+    <div className="relative mt-5">
+      <form onSubmit={onSubmit}>
+        <div className="flex items-center gap-2.5 rounded-2xl border border-border bg-card px-4 py-3 shadow-sm">
+          <Search className="h-4 w-4 shrink-0 text-muted-foreground" />
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => {
+              setQuery(e.target.value);
+              setOpen(true);
+            }}
+            onFocus={() => setOpen(true)}
+            onBlur={() => window.setTimeout(() => setOpen(false), 150)}
+            placeholder='Buscar aula ou tema (ex.: "iogurte bariátrico")'
+            className="min-w-0 flex-1 bg-transparent text-sm outline-none placeholder:text-muted-foreground"
+          />
+        </div>
+      </form>
+
+      {open && query.trim() ? (
+        <div className="absolute inset-x-0 top-full z-20 mt-2 overflow-hidden rounded-2xl border border-border bg-card shadow-lg">
+          {results.length > 0 ? (
+            results.map((r) => (
+              <button
+                key={r.id}
+                type="button"
+                onMouseDown={(e) => e.preventDefault()}
+                onClick={() => irPara(r)}
+                className="flex w-full flex-col items-start gap-0.5 border-b border-border px-4 py-3 text-left last:border-b-0 active:bg-muted/60"
+              >
+                <span className="text-sm font-semibold leading-tight">{r.titulo}</span>
+                {r.subtitulo ? (
+                  <span className="text-xs text-muted-foreground">{r.subtitulo}</span>
+                ) : null}
+              </button>
+            ))
+          ) : (
+            <p className="px-4 py-3 text-sm text-muted-foreground">
+              Nada encontrado — tente outro termo ou fale com o suporte.
+            </p>
+          )}
+        </div>
+      ) : null}
     </div>
   );
 }
