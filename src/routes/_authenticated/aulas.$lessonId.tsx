@@ -212,19 +212,49 @@ function AulaPage() {
           )}
         </div>
 
-        {/* Tabs: Sobre / Materiais Extras */}
+        {/* Tabs: Sobre / Materiais Extras — exceção: aulas com materiaisEmbaixoSobre
+            não têm a aba "Materiais Extras", os materiais aparecem embaixo do
+            texto dentro de "Sobre". */}
         <Tabs defaultValue="sobre" className="mt-5">
-          <TabsList className="grid h-12 w-full grid-cols-2 p-1">
+          <TabsList
+            className={`grid h-12 w-full p-1 ${aula.materiaisEmbaixoSobre ? "grid-cols-1" : "grid-cols-2"}`}
+          >
             <TabsTrigger value="sobre" className="h-10 gap-1.5 text-sm">
               <Info className="h-4 w-4" /> Sobre
             </TabsTrigger>
-            <TabsTrigger value="materiais" className="h-10 gap-1.5 text-sm">
-              <FileText className="h-4 w-4" /> Materiais Extras
-            </TabsTrigger>
+            {!aula.materiaisEmbaixoSobre && (
+              <TabsTrigger value="materiais" className="h-10 gap-1.5 text-sm">
+                <FileText className="h-4 w-4" /> Materiais Extras
+              </TabsTrigger>
+            )}
           </TabsList>
 
           <TabsContent value="sobre" className="mt-4 space-y-4">
             <p className="text-sm leading-relaxed text-muted-foreground">{aula.descricao}</p>
+
+            {aula.materiaisEmbaixoSobre && materiais.length > 0 && (
+              <div className="space-y-3">
+                {materiais.map((m, i) => (
+                  <a
+                    key={i}
+                    href={m.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 rounded-2xl border border-border bg-card p-4 active:scale-[0.99]"
+                  >
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gold/20 text-gold-foreground">
+                      <Download className="h-6 w-6" />
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-base font-semibold leading-tight">{m.titulo}</p>
+                      <p className="mt-0.5 text-xs text-muted-foreground">
+                        {m.descricao ?? "Toque para baixar"}
+                      </p>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            )}
 
             {(prev || next) && (
               <div className="flex gap-2 pt-2">
@@ -256,6 +286,7 @@ function AulaPage() {
             )}
           </TabsContent>
 
+          {!aula.materiaisEmbaixoSobre && (
           <TabsContent value="materiais" className="mt-4 space-y-3">
             {materiais.length === 0 ? (
               <div className="rounded-2xl border border-dashed border-border p-6 text-center">
@@ -286,6 +317,7 @@ function AulaPage() {
               ))
             )}
           </TabsContent>
+          )}
         </Tabs>
 
       </div>

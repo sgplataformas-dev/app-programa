@@ -78,6 +78,8 @@ export type Aula = {
   materiais?: MaterialExtra[];
   cta?: CtaConfig;
   vturbId?: string;
+  /** Exceção pontual: materiais aparecem embaixo do texto em "Sobre", sem a aba "Materiais Extras" separada. */
+  materiaisEmbaixoSobre?: boolean;
 };
 
 export type Modulo = {
@@ -132,6 +134,7 @@ export const CATEGORIAS: Categoria[] = [
                 descricao: "PDF com o resumo da aula",
               },
             ],
+            materiaisEmbaixoSobre: true,
             ...vazio,
           },
         ],
