@@ -1,8 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { createClient } from "@supabase/supabase-js";
 import { convertToModelMessages, streamText, type UIMessage } from "ai";
-import { createLovableAiGatewayProvider } from "@/lib/ai-gateway.server";
-import { createGoogleGenerativeAI } from "@ai-sdk/google";
+import { createOpenAIProvider } from "@/lib/ai-gateway.server";
 import { getKnowledgeBase } from "@/content/fernandinho-kb.server";
 import type { Database } from "@/integrations/supabase/types";
 
@@ -43,11 +42,11 @@ export const Route = createFileRoute("/api/chat")({
 
         const SUPABASE_URL = process.env.SUPABASE_URL;
         const SUPABASE_PUBLISHABLE_KEY = process.env.SUPABASE_PUBLISHABLE_KEY;
-        const apiKey = process.env.LOVABLE_API_KEY;
+        const openaiKey = process.env.OPENAI_API_KEY;
         if (!SUPABASE_URL || !SUPABASE_PUBLISHABLE_KEY) {
           return new Response("Backend não configurado", { status: 500 });
         }
-        if (!apiKey) {
+        if (!openaiKey) {
           return new Response("IA não configurada", { status: 500 });
         }
 
@@ -90,12 +89,7 @@ export const Route = createFileRoute("/api/chat")({
           }
         }
 
-        const gateway = createLovableAiGatewayProvider(apiKey);
-
-        const geminiKey = process.env.GEMINI_API_KEY;
-        const model = geminiKey
-          ? createGoogleGenerativeAI({ apiKey: geminiKey })("gemini-3.6-flash")
-          : gateway("google/gemini-3.6-flash");
+        const model = createOpenAIProvider(openaiKey)("gpt-6-luna");
 
         try {
           const result = streamText({
