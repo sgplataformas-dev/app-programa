@@ -176,6 +176,7 @@ export const CATEGORIAS: Categoria[] = [
                 descricao: "PDF com 20 receitas para incluir o iogurte bariátrico na sua rotina.",
               },
             ],
+            materiaisEmbaixoSobre: true,
             ...vazio,
           },
           {
