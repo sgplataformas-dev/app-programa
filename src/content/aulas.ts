@@ -44,6 +44,8 @@ import bonus1Aloe from "@/assets/bonus1-aloe.jpg";
 import bonus1Espinheira from "@/assets/bonus1-espinheira.jpg";
 import bonus1Tonico from "@/assets/bonus1-tonico.jpg";
 import planoColagenoPdf from "@/assets/plano-colageno-natural.pdf";
+import blend20ReceitasPdf from "@/assets/20-receitas-blend-pro-colageno-active.pdf";
+import blendReceitaPdf from "@/assets/receita-blend-pro-colageno-active.pdf";
 
 
 
@@ -250,6 +252,16 @@ export const CATEGORIAS: Categoria[] = [
             titulo: "Flacidez Nunca Mais — PDF",
             url: planoColagenoPdf,
             descricao: "Material completo em PDF para você baixar agora.",
+          },
+          {
+            titulo: "20 Receitas — Blend Pró-Colágeno Active",
+            url: blend20ReceitasPdf,
+            descricao: "20 receitas com o Blend Pró-Colágeno Active em PDF.",
+          },
+          {
+            titulo: "Receita — Blend Pró-Colágeno Active",
+            url: blendReceitaPdf,
+            descricao: "Receita passo a passo do Blend Pró-Colágeno Active em PDF.",
           },
         ],
         aulas: [
