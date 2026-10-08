@@ -3,6 +3,7 @@ import fase1Banner from "@/assets/fase1-banner.webp";
 import fase2Banner from "@/assets/fase2-banner.jpg";
 import fase3Banner from "@/assets/fase3-banner.png";
 import resumoAtnnsAris from "@/assets/resumo-atnns-aris.pdf";
+import planoAlimentar10DiasAri from "@/assets/plano-alimentar-10-dias-ari.pdf";
 import aulaBrigadeiro from "@/assets/aula2-brigadeiro.jpg";
 import aulaNhoque from "@/assets/aula3-nhoque.jpg";
 import aulaDoceBiomassa from "@/assets/aula4-doce-biomassa.jpg";
@@ -132,6 +133,11 @@ export const CATEGORIAS: Categoria[] = [
                 titulo: "Resumo: ATNNs e ARIs",
                 url: resumoAtnnsAris,
                 descricao: "PDF com o resumo da aula",
+              },
+              {
+                titulo: "Plano Alimentar 10 Dias ARI",
+                url: planoAlimentar10DiasAri,
+                descricao: "PDF com o plano alimentar completo dos 10 dias.",
               },
             ],
             materiaisEmbaixoSobre: true,
