@@ -4,6 +4,7 @@ import fase2Banner from "@/assets/fase2-banner.jpg";
 import fase3Banner from "@/assets/fase3-banner.png";
 import resumoAtnnsAris from "@/assets/resumo-atnns-aris.pdf";
 import planoAlimentar10DiasAri from "@/assets/plano-alimentar-10-dias-ari.pdf";
+import iogurteTabelaNutricional from "@/assets/iogurte-bariatrico-tabela-nutricional.pdf";
 import aulaBrigadeiro from "@/assets/aula2-brigadeiro.jpg";
 import aulaNhoque from "@/assets/aula3-nhoque.jpg";
 import aulaDoceBiomassa from "@/assets/aula4-doce-biomassa.jpg";
@@ -174,6 +175,11 @@ export const CATEGORIAS: Categoria[] = [
                 titulo: "Iogurte Bariátrico ARI — 20 Receitas",
                 url: iogurte20Receitas,
                 descricao: "PDF com 20 receitas para incluir o iogurte bariátrico na sua rotina.",
+              },
+              {
+                titulo: "Iogurte Bariátrico — Tabela Nutricional",
+                url: iogurteTabelaNutricional,
+                descricao: "Tabela nutricional completa do iogurte bariátrico em PDF.",
               },
             ],
             materiaisEmbaixoSobre: true,
