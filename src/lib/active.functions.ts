@@ -207,6 +207,9 @@ const intakeSchema = z.object({
   restricoesOutro: z.string().max(200).optional(),
   alcool: z.string().max(40).optional(),
   mlAgua: z.number().min(0).max(10000).optional(),
+  // Fase 1 — ex-quiz-fase-1, absorvido na anamnese.
+  evitarAtnn: z.array(z.string()).max(50).optional(),
+  evitarAri: z.array(z.string()).max(50).optional(),
 });
 
 
@@ -244,6 +247,14 @@ export const salvarIntake = createServerFn({ method: "POST" })
       : [];
     const pesos = [...pesosAtuais.filter((p) => p.data !== hoje), novoPeso];
 
+    // Preferências de ATNN/ARI (ex-quiz-fase-1) — mesmo formato de chave
+    // (evitar_atnn/evitar_ari) que já era gravado em preferencias_alimentares,
+    // só que agora coletado dentro da própria anamnese.
+    const preferenciasAlimentares = {
+      evitar_atnn: data.evitarAtnn ?? [],
+      evitar_ari: data.evitarAri ?? [],
+    };
+
     await retry(
       async () => {
         const { error } = await supabase.from("user_progress").upsert(
@@ -251,6 +262,8 @@ export const salvarIntake = createServerFn({ method: "POST" })
             user_id: userId,
             protocolo_iniciado_em: prog.data?.protocolo_iniciado_em ?? new Date().toISOString(),
             pesos: pesos as unknown as never,
+            preferencias_alimentares: preferenciasAlimentares as unknown as never,
+            quiz_fase1_completo: true,
           },
           { onConflict: "user_id" },
         );
@@ -274,46 +287,6 @@ export const getIntakeMaisRecente = createServerFn({ method: "GET" })
       .limit(1)
       .maybeSingle();
     return { respostas: (data?.respostas ?? null) as null | { [k: string]: string | number | null } };
-  });
-
-const quizSchema = z.object({
-  evitar_atnn: z.array(z.string()).max(50),
-  evitar_ari: z.array(z.string()).max(50),
-});
-
-export const salvarQuizFase1 = createServerFn({ method: "POST" })
-  .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) => quizSchema.parse(d))
-  .handler(async ({ data, context }) => {
-    const { supabase, userId } = context;
-    const prog = await retry(
-      async () => {
-        const res = await supabase.from("user_progress").select("user_id").eq("user_id", userId).maybeSingle();
-        if (res.error) throw res.error;
-        return res;
-      },
-      { retries: 4, label: "quiz-fase1-progress-select" },
-    );
-
-    const payload = {
-      preferencias_alimentares: data as unknown as never,
-      quiz_fase1_completo: true,
-    };
-
-    await retry(
-      async () => {
-        const { error } = prog.data
-          ? await supabase.from("user_progress").update(payload).eq("user_id", userId)
-          : await supabase.from("user_progress").insert({
-              user_id: userId,
-              protocolo_iniciado_em: new Date().toISOString(),
-              ...payload,
-            });
-        if (error) throw error;
-      },
-      { retries: 4, label: "quiz-fase1-progress-save" },
-    );
-    return { ok: true };
   });
 
 export const getPreferencias = createServerFn({ method: "GET" })

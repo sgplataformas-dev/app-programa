@@ -66,7 +66,6 @@ export type MaterialExtra = {
 export type CtaConfig = {
   label: string;
   to: string;
-  lockWhenQuizFase1Completo?: boolean;
 };
 
 export type Aula = {
@@ -126,7 +125,10 @@ export const CATEGORIAS: Categoria[] = [
             descricao:
               "Nessa aula, o professor Fernando mostra como funcionará os primeiros dez dias do protocolo.\n\nE vai explicar exatamente qual é a diferença entre os ATNNs e os ARIs e como usá-los ao seu favor para desinflamar seu intestino.",
             duracao: "12:40",
-            cta: { label: "Iniciar Fase 1", to: "/quiz-fase-1", lockWhenQuizFase1Completo: true },
+            // As perguntas de ATNN/ARI que ficavam no quiz pós-clique (/quiz-fase-1)
+            // foram absorvidas na anamnese (intake.tsx) — o clique agora já leva
+            // direto pro dashboard, de onde a aluna segue assistindo o curso.
+            cta: { label: "Iniciar Fase 1", to: "/hoje" },
             vturbId: "vid-6a2e328f66b98f0059f888a4",
             thumbnailUrl: aula1Fase1Thumb,
             materiais: [

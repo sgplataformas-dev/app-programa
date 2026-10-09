@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { createFileRoute, Link, useNavigate, notFound } from "@tanstack/react-router";
-import { ChevronLeft, FileText, CheckCircle2, Info, Play, Download, Lock } from "lucide-react";
+import { ChevronLeft, FileText, CheckCircle2, Info, Play, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { findAula, findModulo } from "@/content/aulas";
@@ -34,7 +34,6 @@ function AulaPage() {
 
   const [watched, setWatched] = useState(false);
   const [marking, setMarking] = useState(false);
-  const [quizFase1Completo, setQuizFase1Completo] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -57,20 +56,6 @@ function AulaPage() {
         );
     })();
   }, [lessonId]);
-
-  useEffect(() => {
-    if (!aula.cta?.lockWhenQuizFase1Completo) return;
-    (async () => {
-      const { data: auth } = await supabase.auth.getUser();
-      if (!auth.user) return;
-      const { data } = await supabase
-        .from("user_progress")
-        .select("quiz_fase1_completo")
-        .eq("user_id", auth.user.id)
-        .maybeSingle();
-      setQuizFase1Completo(Boolean(data?.quiz_fase1_completo));
-    })();
-  }, [aula.cta?.lockWhenQuizFase1Completo]);
 
   const markWatched = async () => {
     if (watched || marking) return;
@@ -173,24 +158,14 @@ function AulaPage() {
 
       <div className="px-5">
         {/* CTA — somente quando configurado */}
-        {aula.cta && (() => {
-          const locked = Boolean(aula.cta.lockWhenQuizFase1Completo && quizFase1Completo);
-          return (
-            <Button
-              className="mt-4 h-14 w-full text-base"
-              onClick={() => navigate({ to: aula.cta!.to as string })}
-              disabled={locked}
-            >
-              {locked ? (
-                <>
-                  <Lock className="h-4 w-4" /> Fase 1 já iniciada
-                </>
-              ) : (
-                aula.cta.label
-              )}
-            </Button>
-          );
-        })()}
+        {aula.cta && (
+          <Button
+            className="mt-4 h-14 w-full text-base"
+            onClick={() => navigate({ to: aula.cta!.to as string })}
+          >
+            {aula.cta.label}
+          </Button>
+        )}
 
         {/* Progresso */}
         <div className="mt-4 flex items-center gap-2">

@@ -52,8 +52,6 @@ function Hoje() {
     if (!data) return;
     if (!data.intakeCompleto) {
       navigate({ to: "/boas-vindas" });
-    } else if (!data.quizFase1Completo) {
-      navigate({ to: "/aulas/$lessonId", params: { lessonId: "fase-1-intro" } });
     }
   }, [data, navigate]);
 

@@ -26,6 +26,7 @@ import {
   BRISTOL_OPCOES,
   type IntakeRespostas,
 } from "@/content/diagnosticos";
+import { ATNN_GRUPOS, ARI_GRUPOS, type GrupoOpcoes } from "@/content/aulas";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { captureMonitoringEvent } from "@/lib/monitoring";
@@ -333,6 +334,34 @@ function IntakePage() {
         </RadioGroup>
       ),
     },
+    {
+      key: "evitarAtnn",
+      label: "Dos ATNNs, quais você não consegue ficar sem comer?",
+      ajuda:
+        "Marque os Alimentos Tóxicos Não Necessários que mais aparecem na sua rotina. Vamos olhar com carinho para esses.",
+      opcional: true,
+      input: (
+        <GroupedMultiCheck
+          grupos={ATNN_GRUPOS}
+          selected={d.evitarAtnn ?? []}
+          onChange={(v) => setD({ ...d, evitarAtnn: v })}
+        />
+      ),
+    },
+    {
+      key: "evitarAri",
+      label: "Dos ARIs, quais você tem alergia, restrição ou não gosta?",
+      ajuda:
+        "Marque os Alimentos Reparadores Intestinais que você prefere evitar. Vamos sugerir sempre as outras opções.",
+      opcional: true,
+      input: (
+        <GroupedMultiCheck
+          grupos={ARI_GRUPOS}
+          selected={d.evitarAri ?? []}
+          onChange={(v) => setD({ ...d, evitarAri: v })}
+        />
+      ),
+    },
   ];
 
   const stepsAtuais = etapa === "form1" ? steps1 : etapa === "form2" ? steps2 : steps3;
@@ -342,7 +371,9 @@ function IntakePage() {
 
   const current = stepsAtuais[step];
   const value = current ? (d as Record<string, unknown>)[current.key] : undefined;
-  const canContinue = validarValor(value);
+  // ATNN/ARI (ex-quiz-fase-1) sempre foram opcionais — zero marcado é uma
+  // resposta válida (nem toda aluna tem ATNN/ARI pra evitar).
+  const canContinue = current?.opcional ? true : validarValor(value);
 
   async function avancar() {
     setSaveError(null);
@@ -489,6 +520,8 @@ type PerguntaConfig = {
   label: string;
   ajuda?: string;
   input: React.ReactNode;
+  /** Quando true, "Continuar" fica liberado mesmo sem nenhuma opção marcada. */
+  opcional?: boolean;
 };
 
 function validarValor(v: unknown): boolean {
@@ -599,6 +632,11 @@ async function salvarIntakeNoCliente(payload: IntakeRespostas) {
     { data: hoje, peso: payload.peso ?? 0 },
   ];
 
+  const preferenciasAlimentares = {
+    evitar_atnn: payload.evitarAtnn ?? [],
+    evitar_ari: payload.evitarAri ?? [],
+  };
+
   await retry(
     async () => {
       const { error } = await supabase.from("user_progress").upsert(
@@ -606,6 +644,8 @@ async function salvarIntakeNoCliente(payload: IntakeRespostas) {
           user_id: userId,
           protocolo_iniciado_em: prog.data?.protocolo_iniciado_em ?? new Date().toISOString(),
           pesos: pesos as unknown as never,
+          preferencias_alimentares: preferenciasAlimentares as unknown as never,
+          quiz_fase1_completo: true,
         },
         { onConflict: "user_id" },
       );
@@ -775,6 +815,72 @@ function MultiCheck({
         );
       })}
     </ul>
+  );
+}
+
+/** Mesma lista de MultiCheck, mas agrupada por categoria (com emoji) — usada pelas perguntas de ATNN/ARI, ex-quiz-fase-1. */
+function GroupedMultiCheck({
+  grupos,
+  selected,
+  onChange,
+}: {
+  grupos: GrupoOpcoes[];
+  selected: string[];
+  onChange: (v: string[]) => void;
+}) {
+  function toggle(item: string) {
+    onChange(selected.includes(item) ? selected.filter((x) => x !== item) : [...selected, item]);
+  }
+  return (
+    <div className="space-y-8">
+      {grupos.map((grupo) => (
+        <section key={grupo.categoria}>
+          <div className="mb-4 flex items-center gap-2">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary-soft text-base">
+              {grupo.emoji}
+            </div>
+            <h2 className="text-xs font-bold uppercase tracking-wide text-primary">
+              {grupo.categoria}
+            </h2>
+          </div>
+          <ul className="space-y-3">
+            {grupo.itens.map((opt) => {
+              const checked = selected.includes(opt);
+              return (
+                <li key={opt}>
+                  <button
+                    type="button"
+                    onClick={() => toggle(opt)}
+                    className={`group flex w-full items-center gap-4 rounded-2xl p-4 text-left shadow-sm transition-all active:scale-[0.98] ${
+                      checked
+                        ? "border-2 border-primary bg-primary-soft"
+                        : "border border-border bg-card hover:border-primary/30"
+                    }`}
+                  >
+                    <span
+                      className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full transition-colors ${
+                        checked
+                          ? "bg-primary text-primary-foreground"
+                          : "border-2 border-border bg-background"
+                      }`}
+                    >
+                      {checked && <Check className="h-3.5 w-3.5" strokeWidth={3} />}
+                    </span>
+                    <span
+                      className={`text-[15px] leading-snug ${
+                        checked ? "font-semibold text-primary" : "font-medium text-foreground"
+                      }`}
+                    >
+                      {opt}
+                    </span>
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      ))}
+    </div>
   );
 }
 

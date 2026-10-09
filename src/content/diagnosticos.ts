@@ -18,6 +18,9 @@ export type IntakeRespostas = {
   restricoesOutro?: string;
   alcool?: string;
   mlAgua?: number;
+  /** Fase 1 — ATNNs/ARIs que a pessoa quer evitar (ex-quiz-fase-1, absorvido na anamnese). */
+  evitarAtnn?: string[];
+  evitarAri?: string[];
 };
 
 export type PerfilDiagnostico = {
