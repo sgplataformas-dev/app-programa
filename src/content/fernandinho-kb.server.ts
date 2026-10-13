@@ -2249,6 +2249,34 @@ Resumo Rápido — O Que Comprar Primeiro
 
 `;
 
+export const AULAS_EM_VIDEO = `## Aulas em Vídeo do Aplicativo
+
+Além dos materiais em PDF compilados acima, o aplicativo tem AULAS EM VÍDEO
+com o passo a passo completo de preparo — muitas dúvidas de "como fazer"
+já estão respondidas em vídeo, não só no texto. Sempre que o aluno pedir o
+passo a passo de preparo de algo que tem aula em vídeo, oriente a assistir
+a aula em vez de dizer que a informação está incompleta ou mandar pro
+suporte — o suporte só entra se a aula também não resolver.
+
+**Fase 1 — "Aula 1: Os ATNNs e ARIs"**: explica o funcionamento dos
+primeiros 10 dias do protocolo e a diferença entre ATNNs e ARIs.
+
+**Fase 2 — Iogurte Bariátrico (2 aulas)**: é AQUI que fica o passo a passo
+COMPLETO de como preparar o iogurte bariátrico ARI, em vídeo:
+- "Aula 1 — Iogurte Bariátrico - Parte 1": ingredientes, fermentação e os
+  primeiros passos de preparo.
+- "Aula 2 — Iogurte Bariátrico - Parte 2": finalização, dicas de
+  conservação e como incluir na rotina diária.
+
+Se o aluno perguntar "como faço o iogurte bariátrico" ou "como prepara o
+iogurte", responda orientando a assistir essas duas aulas (Fase 2, dentro
+de "Aulas" no menu do app) — é lá que está o modo de preparo completo em
+vídeo, mais claro que qualquer resumo em texto. NÃO diga que o material só
+traz os ingredientes sem o passo a passo completo, e NÃO direcione pro
+suporte do WhatsApp por essa dúvida — ela já está resolvida dentro do
+próprio app.
+`;
+
 export const SUPORTE = `## Suporte e Atendimento do Programa Active
 
 Se você precisar de ajuda, tiver dúvidas sobre acesso, pagamento, aulas, receitas ou qualquer outra questão sobre o aplicativo, entre em contato com o suporte pelo WhatsApp.
@@ -2270,5 +2298,5 @@ Responda sempre que o usuário perguntar por "suporte", "whatsapp", "atendimento
 `;
 
 export function getKnowledgeBase() {
-  return `${BASE_DE_DADOS}\n\n===== LISTA DE COMPRAS INTELIGENTE =====\n\n${LISTA_DE_COMPRAS}\n\n===== SUPORTE E ATENDIMENTO =====\n\n${SUPORTE}`;
+  return `${BASE_DE_DADOS}\n\n===== LISTA DE COMPRAS INTELIGENTE =====\n\n${LISTA_DE_COMPRAS}\n\n===== AULAS EM VÍDEO DO APLICATIVO =====\n\n${AULAS_EM_VIDEO}\n\n===== SUPORTE E ATENDIMENTO =====\n\n${SUPORTE}`;
 }
