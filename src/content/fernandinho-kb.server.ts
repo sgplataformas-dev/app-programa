@@ -2252,29 +2252,129 @@ Resumo Rápido — O Que Comprar Primeiro
 export const AULAS_EM_VIDEO = `## Aulas em Vídeo do Aplicativo
 
 Além dos materiais em PDF compilados acima, o aplicativo tem AULAS EM VÍDEO
-com o passo a passo completo de preparo — muitas dúvidas de "como fazer"
-já estão respondidas em vídeo, não só no texto. Sempre que o aluno pedir o
-passo a passo de preparo de algo que tem aula em vídeo, oriente a assistir
-a aula em vez de dizer que a informação está incompleta ou mandar pro
-suporte — o suporte só entra se a aula também não resolver.
+com o passo a passo completo de preparo — transcritas abaixo (resumo do que
+é falado), pra você já responder o conteúdo diretamente quando fizer
+sentido. Sempre que o aluno pedir o passo a passo de algo que tem aula em
+vídeo, você pode responder com o conteúdo já aqui E orientar a assistir a
+aula (fica mais fácil de acompanhar em vídeo do que em texto) — nunca diga
+que a informação está incompleta ou mande pro suporte por uma dúvida já
+coberta aqui embaixo.
 
-**Fase 1 — "Aula 1: Os ATNNs e ARIs"**: explica o funcionamento dos
-primeiros 10 dias do protocolo e a diferença entre ATNNs e ARIs.
+### Fase 1 — "Aula 1: Os ATNNs e ARIs"
 
-**Fase 2 — Iogurte Bariátrico (2 aulas)**: é AQUI que fica o passo a passo
-COMPLETO de como preparar o iogurte bariátrico ARI, em vídeo:
-- "Aula 1 — Iogurte Bariátrico - Parte 1": ingredientes, fermentação e os
-  primeiros passos de preparo.
-- "Aula 2 — Iogurte Bariátrico - Parte 2": finalização, dicas de
-  conservação e como incluir na rotina diária.
+Explica os primeiros 10 dias do protocolo. Resumo do "porquê" de cada ATNN
+(o texto completo da aula tem mais detalhe sobre o mecanismo de cada um):
+- Glúten (pão, macarrão, biscoitos): ativa a zonulina, abre as junções do
+  intestino (hiperpermeabilidade intestinal) — gatilho inflamatório central.
+- Laticínios tradicionais (leite de vaca, queijo, manteiga, iogurte comum):
+  a caseína A1 desencadeia inflamação, estimula muco intestinal em excesso
+  e atrapalha a absorção de nutrientes.
+- Carnes vermelhas/embutidos industrializados: produzem TMAO (inflamação
+  sistêmica); embutidos somam nitrito/nitrato/sódio em excesso/gordura trans.
+- Açúcar refinado e adoçantes artificiais: alimentam patógenos intestinais,
+  geram pico de insulina, depletam zinco/magnésio, desequilibram a microbiota.
+- Ultraprocessados: TBHQ, glutamato monossódico, corantes e conservantes
+  comprometem a barreira intestinal e estimulam compulsão.
+- Óleos ultrarrefinados e frituras: desequilibram ômega 6/ômega 3, geram
+  compostos tóxicos (aldeídos, acroleína).
+- Álcool: aumenta permeabilidade intestinal, inflama o fígado — não existe
+  dose segura dentro do protocolo.
+- Temperos/caldos industrializados: fonte de glutamato e sódio em excesso.
 
-Se o aluno perguntar "como faço o iogurte bariátrico" ou "como prepara o
-iogurte", responda orientando a assistir essas duas aulas (Fase 2, dentro
-de "Aulas" no menu do app) — é lá que está o modo de preparo completo em
-vídeo, mais claro que qualquer resumo em texto. NÃO diga que o material só
-traz os ingredientes sem o passo a passo completo, e NÃO direcione pro
-suporte do WhatsApp por essa dúvida — ela já está resolvida dentro do
-próprio app.
+Os ARI (alimentos reparadores) reconstroem a mucosa, equilibram a
+microbiota e são a base pra produção da Akkermansia muciniphila: frutas
+(mamão papaia, banana verde, abacaxi, manga, acerola, abacate), verduras
+(couve-manteiga, rúcula, agrião, chicória, almeirão, coentro/salsinha),
+legumes/tubérculos (batata-doce roxa, cenoura, beterraba, abóbora,
+mandioca), leguminosas (feijão, lentilha, grão-de-bico, ervilha), grãos
+integrais sem glúten (arroz integral, aveia, quinoa, milho, tapioca,
+amaranto), sementes oleaginosas (linhaça, chia, gergelim/tahine, castanha
+do Pará, castanha de caju) e temperos funcionais (cúrcuma + pimenta preta +
+azeite, gengibre, alho, canela, vinagre de maçã com a mãe, chucrute/
+kombucha, azeite extra virgem).
+
+### Fase 2 — Iogurte Bariátrico (modo de preparo COMPLETO, em 2 aulas)
+
+**Ingredientes (rende uma leva — pode dobrar/triplicar mantendo a proporção):**
+- 200g de aveia em flocos (NÃO usar farinha de aveia — não fermenta nem
+  fica com a textura certa)
+- 50g de quinoa (até 70g pra quem quer acelerar mais a produção da bactéria)
+- 20g de chia
+- 20g de linhaça (dourada é mais eficiente que a marrom)
+- Opcional (5º ingrediente, potencializa a produção da Akkermansia): chá
+  verde no lugar da água — pode ser de caixinha
+
+**Passo a passo:**
+1. Hidrate a aveia com água FRIA, cobrindo bem. Descanse no mínimo 2h (pode
+   deixar até 12h de um dia pro outro — já começa a fermentar antes).
+2. Hidrate a quinoa separadamente, com água QUENTE/fervendo (é a única que
+   leva água quente — isso favorece a fermentação dela). Também no mínimo 2h,
+   até 12h.
+3. Hidrate a chia e a linhaça juntas, com água fria, por 2h também.
+4. Depois da hidratação: lave e escorra a aveia e a quinoa (a chia e a
+   linhaça NÃO se lavam — não pode perder a mucilagem/gosma que elas soltam).
+5. Bata tudo no liquidificador junto com 150ml de água (ou do chá verde
+   preparado) — se ficar muito espesso, acrescente mais 50ml.
+6. Coloque num pote com espaço sobrando (a fermentação cresce e gera gases
+   — se encher o pote ele pode vazar; não estraga, só precisa de mais espaço).
+7. Feche hermeticamente (sem deixar entrar ar) e deixe fermentar num local
+   seco, escuro e arejado (dentro de um armário ventilado). NÃO abra a tampa
+   durante a fermentação (risco de contaminar).
+8. Tempo de fermentação: 7 dias normalmente; 4 a 5 dias se o clima estiver
+   acima de 27°C.
+9. Depois da fermentação: bata de novo no liquidificador (a água costuma
+   separar da mistura) pra voltar a textura cremosa, e leve à geladeira.
+   Dura de 2 a 3 meses na geladeira — comece a próxima leva antes de acabar.
+
+**Dicas de sabor e textura (2ª aula):** o sabor natural é de fermentado
+(sem açúcar) — pra dar sabor, bata só a porção que for consumir (nunca o
+pote inteiro) com frutas como morango, maçã, mamão ou framboesa, ou use
+adoçante natural de tâmara/uva passa. Finalize com frutas por cima
+(maçã, morango, mirtilo, framboesa, uva), farinha de uva, cacau, farinha
+de banana verde (tem triptofano, ajuda na serotonina) e mais uma colher de
+chia.
+
+### Flacidez Nunca Mais — Aula Teórica (produção de colágeno)
+
+O corpo NÃO usa direto o colágeno que você ingere (pó, cápsula, alimento)
+— ele é quebrado em aminoácidos na digestão, e o que o corpo faz com eles
+depende do ambiente que a alimentação cria. Ou seja: você não repõe
+colágeno, você FABRICA colágeno. Pra isso o corpo precisa de:
+1. Aminoácidos precursores (glicina, prolina, lisina) — feijões, lentilha,
+   grão-de-bico, quinoa, semente de abóbora, aveia, cogumelos.
+2. Vitamina C (cofator nº1, sem ela o processo trava) — acerola, goiaba,
+   caju, kiwi, pimentão, brócolis, couve.
+3. Zinco, cobre e silício (ativadores enzimáticos) — semente de abóbora e
+   feijão preto (zinco), castanha do Pará e lentilha (cobre), aveia,
+   cavalinha e folhas verdes escuras (silício).
+
+O que DESTRÓI colágeno (acelera flacidez): açúcar/farinhas refinadas
+(glicação — enrijece e quebra as fibras), álcool (atrapalha absorção de
+zinco/vitamina C), embutidos/ultraprocessados (ativam metaloproteinases
+que quebram as fibras), excesso de gordura saturada, e estresse oxidativo
+por dieta pobre em antioxidantes.
+
+### Flacidez Nunca Mais — Aula Prática (receita do Blend Pró-Colágeno Active)
+
+**Os 7 ingredientes (rende uma leva, dura 2-3 meses na geladeira):**
+- 3 colheres de sopa de proteína de ervilha em pó (aminoácidos: prolina,
+  glicina, lisina)
+- 2 colheres de sopa de acerola em pó (vitamina C)
+- 1 colher de sopa de camu camu em pó (vitamina C concentrada — tem
+  substituições no PDF complementar pra quem não encontra: baobá, cacadu)
+- 1 colher de sopa de cavalinha em pó (sílica, firmeza da pele)
+- 2 colheres de sopa de semente de abóbora triturada (zinco e cobre)
+- 1 colher de chá de canela (de preferência do Ceilão)
+- 1 colher de chá de cúrcuma em pó (antioxidante, protege o colágeno já
+  existente — usa-se pouco mesmo, a quantidade acima já rende bastante)
+
+**Modo de preparo:** misture todos os ingredientes secos numa tigela (sem
+precisar de liquidificador), amassando bem os que empelotarem (acerola
+costuma empelotar). Guarde num pote fechado na geladeira, dura 2-3 meses.
+Pode usar polvilhado em qualquer refeição (como queijo ralado) — tem
+receitas específicas de como incorporar no PDF complementar da Fase.
+Funciona melhor COMBINADO com o plano alimentar da fase teórica, não
+sozinho.
 `;
 
 export const SUPORTE = `## Suporte e Atendimento do Programa Active
